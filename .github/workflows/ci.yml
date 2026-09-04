@@ -1,0 +1,62 @@
+name: CI
+
+# Calls ums-devops's reusable Angular workflow (ums-conventions.md: "every repo calls the
+# reusable workflow published from ums-devops - no repo hand-rolls its own pipeline from
+# scratch"), mirroring ums-core's own thin ci.yml calling pattern for the .NET reusable workflow.
+#
+# run-docker-build: false -- ums-design-system is a published npm package (a library + its own
+# dev-only catalog app), never a deployed container image, so the Docker-build/Trivy-scan half of
+# angular-app-ci.yml (gated by run-docker-build) does not apply here.
+#
+# angular-app-ci.yml's own steps are: npm ci, `npm audit --audit-level=high`, `npm run lint`,
+# `npm run format:check`, `npm run stylelint`, `npm run test -- --watch=false
+# --browsers=ChromeHeadless`, `npm run build`. It has no Playwright/e2e step at all -- it was
+# written once for the six ums-*-web apps, none of which currently run a visual-regression suite
+# -- so requirement-spec.md §9's "a visual regression test suite... runs in ums-design-system's
+# own CI on every change, before publish" is not covered by the reusable workflow and needs its
+# own job here rather than a change to a shared workflow six other repos also consume.
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  lint-test-build:
+    name: Lint, Test, Scan, Build
+    uses: ums-suite/ums-devops/.github/workflows/angular-app-ci.yml@main
+    with:
+      run-docker-build: false
+
+  e2e:
+    name: E2E (Playwright a11y + visual regression)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies (npm ci)
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # DSYS-18 (requirement-spec.md §8/§9): axe-core a11y gate + screenshot-diffing visual
+      # regression against the catalog app's Button family page, gating merge exactly like every
+      # other check in this workflow -- not advisory.
+      - name: E2E (axe-core a11y + visual regression)
+        run: npm run e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          if-no-files-found: ignore
