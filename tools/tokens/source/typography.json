@@ -1,0 +1,101 @@
+{
+  "font": {
+    "family": {
+      "display": {
+        "value": "'Fraunces', 'Noto Serif Bengali', Georgia, serif",
+        "type": "fontFamily",
+        "comment": "Headings and marketing/emotional moments; warm variable-optical-size display serif paired with Noto Serif Bengali"
+      },
+      "base": {
+        "value": "'Inter', 'Noto Sans Bengali', system-ui, sans-serif",
+        "type": "fontFamily",
+        "comment": "All UI and body text; paired with Noto Sans Bengali for correct Bengali shaping"
+      }
+    },
+    "feature": {
+      "numeric": {
+        "value": "'tnum' 1",
+        "type": "other",
+        "comment": "Tabular figures for numeric data (tables, dashboards, currency, GPA, dates); apply via the .ums-tnum utility or the tabularNumbers mixin"
+      }
+    }
+  },
+  "type": {
+    "display-1": {
+      "font-size": { "value": "3.5rem", "type": "dimension" },
+      "line-height": { "value": "1.1", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.display}", "type": "fontFamily" },
+      "comment": "Hero headlines (public, admission, alumni landing)"
+    },
+    "display-2": {
+      "font-size": { "value": "2.5rem", "type": "dimension" },
+      "line-height": { "value": "1.15", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.display}", "type": "fontFamily" },
+      "comment": "Section-level marketing headings"
+    },
+    "heading-1": {
+      "font-size": { "value": "2rem", "type": "dimension" },
+      "line-height": { "value": "1.2", "type": "number" },
+      "font-weight": { "value": "600", "operational": "700", "type": "fontWeight" },
+      "font-family": {
+        "value": "{font.family.display}",
+        "operational": "{font.family.base}",
+        "type": "fontFamily"
+      },
+      "comment": "Page titles. Marketing register (default): Display 600. Operational register (admin/faculty apps): Base 700 -- set [data-register=\"operational\"] on the app root."
+    },
+    "heading-2": {
+      "font-size": { "value": "1.5rem", "type": "dimension" },
+      "line-height": { "value": "1.25", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Section headings"
+    },
+    "heading-3": {
+      "font-size": { "value": "1.25rem", "type": "dimension" },
+      "line-height": { "value": "1.3", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Card/panel titles"
+    },
+    "heading-4": {
+      "font-size": { "value": "1.125rem", "type": "dimension" },
+      "line-height": { "value": "1.35", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Sub-panel/table-group titles"
+    },
+    "body-lg": {
+      "font-size": { "value": "1.125rem", "type": "dimension" },
+      "line-height": { "value": "1.5", "type": "number" },
+      "font-weight": { "value": "400", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Lead paragraphs"
+    },
+    "body": {
+      "font-size": { "value": "1rem", "type": "dimension" },
+      "line-height": { "value": "1.5", "type": "number" },
+      "font-weight": { "value": "400", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Default UI/body text"
+    },
+    "body-sm": {
+      "font-size": { "value": "0.875rem", "type": "dimension" },
+      "line-height": { "value": "1.5", "type": "number" },
+      "font-weight": { "value": "400", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "comment": "Secondary/meta text"
+    },
+    "label": {
+      "font-size": { "value": "0.75rem", "type": "dimension" },
+      "line-height": { "value": "1.4", "type": "number" },
+      "font-weight": { "value": "600", "type": "fontWeight" },
+      "font-family": { "value": "{font.family.base}", "type": "fontFamily" },
+      "letter-spacing": { "value": "0.04em", "type": "dimension" },
+      "text-transform": { "value": "uppercase", "type": "other" },
+      "comment": "Table column headers, overlines, status chip labels"
+    }
+  }
+}

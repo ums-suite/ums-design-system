@@ -1,0 +1,31 @@
+// Hand-authored -- not generated. Small, single-purpose utility classes that back a token
+// directly (requirement-spec.md §4 tabular figures; §8 visually-hidden pattern for
+// screen-reader-only text) -- not a general Tailwind-style utility set. Tailwind CSS v4 is the
+// platform's chosen layout-utility layer (design-decisions.md "Utility CSS Layer") in each
+// consuming app; these classes are scoped narrowly to things only this package can define
+// because they read a design-system token.
+
+// requirement-spec.md §4: "All numeric data (tables, dashboards, currency, GPA, dates) enables
+// font-feature-settings: 'tnum' (tabular figures) platform-wide, so columns of numbers align."
+.ums-tnum {
+  font-feature-settings: var(--font-feature-numeric);
+  font-variant-numeric: tabular-nums;
+}
+
+// Standard visually-hidden-but-screen-reader-visible pattern, used by icon-only controls
+// (Icon Button, FAB) to supply their accessible name without a visible label.
+.ums-visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  // stylelint-disable-next-line property-no-deprecated -- kept alongside clip-path as a
+  // fallback for browsers without clip-path support; both are required for the standard
+  // visually-hidden pattern to be robust.
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  margin: -1px;
+  padding: 0;
+}

@@ -1,0 +1,17 @@
+// Page-layout only -- no design-token references here (the catalog app stands in for a real
+// consuming app, so this file is lint-enforced against raw `var(--token)` usage the same way a
+// real ums-*-web app would be; see .stylelintrc.json's projects/catalog override). All visible
+// color/spacing/typography comes from the <ums-button>/<ums-icon-button>/... components
+// themselves, never from this file.
+
+.catalog-section {
+  margin-block-end: 2rem;
+}
+
+.catalog-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}

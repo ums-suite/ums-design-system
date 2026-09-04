@@ -1,0 +1,16 @@
+<section class="catalog-section" data-testid="icon-catalog" aria-labelledby="icon-catalog-heading">
+  <h2 id="icon-catalog-heading">Icon registry</h2>
+  <p>
+    {{ iconNames.length }} icons, dual-weight (regular / duotone), from the Phosphor Icons subset.
+  </p>
+
+  <ul class="icon-grid">
+    @for (name of iconNames; track name) {
+      <li class="icon-grid__item">
+        <ums-icon [name]="name" weight="regular" [size]="24" decorative />
+        <ums-icon [name]="name" weight="duotone" [size]="24" decorative />
+        <span class="icon-grid__label">{{ name }}</span>
+      </li>
+    }
+  </ul>
+</section>

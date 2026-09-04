@@ -1,0 +1,21 @@
+<button
+  class="ums-button__native"
+  [type]="type()"
+  [disabled]="isDisabled"
+  [attr.aria-busy]="loading() ? 'true' : null"
+>
+  @if (loading()) {
+    <ums-icon
+      class="ums-button__icon ums-button__icon--spin"
+      name="spinner"
+      [weight]="iconWeight()"
+      decorative
+    />
+  } @else if (icon() && iconPosition() === 'leading') {
+    <ums-icon class="ums-button__icon" [name]="icon()!" [weight]="iconWeight()" decorative />
+  }
+  <span class="ums-button__label"><ng-content /></span>
+  @if (!loading() && icon() && iconPosition() === 'trailing') {
+    <ums-icon class="ums-button__icon" [name]="icon()!" [weight]="iconWeight()" decorative />
+  }
+</button>

@@ -1,0 +1,4 @@
+{
+  "$comment": "Deprecated token alias registry -- design-decisions.md 'Token Versioning & Deprecation Policy'. When a token is RENAMED (not removed-for-cause), add an entry here mapping the old CSS custom-property name to the current token's dot path (matching the source JSON tree under tools/tokens/source/, e.g. 'color.primary'). build-tokens.mjs emits the old name as an additional CSS custom property still resolving to the new token's value, for one full major-version cycle after the rename. Retire (delete) the entry, and bump a major version, the cycle after that. Empty for v1 -- no renames have happened yet.",
+  "aliases": []
+}

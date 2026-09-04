@@ -34,3 +34,12 @@ logs
 # System files
 .DS_Store
 Thumbs.db
+
+# Angular build cache
+/.angular/cache
+
+# Playwright (e2e/*-snapshots/ baselines ARE committed -- only run artifacts are ignored)
+/playwright-report
+/test-results
+/blob-report
+/playwright/.cache

@@ -1,0 +1,33 @@
+// Page-layout only -- no design-token references here; see
+// pages/button-catalog/button-catalog.component.scss's header comment for the reasoning
+// (this app stands in for a real ums-*-web consuming app, so it is lint-enforced the same way).
+
+:host {
+  display: block;
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding: 1.5rem;
+}
+
+.catalog-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 2rem;
+}
+
+.catalog-header__theme-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.catalog-header__theme-button {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.catalog-header__theme-button[aria-pressed='true'] {
+  font-weight: 700;
+}

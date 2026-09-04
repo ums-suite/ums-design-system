@@ -1,0 +1,10 @@
+// Global styles for the catalog app -- this app stands in for a real ums-*-web consumer, so it
+// wires up @ums/design-system's build outputs the same way a real app's package.json dependency
+// would: tokens.css as a plain stylesheet (never pulled into the Sass module graph -- see
+// design-system's styles/index.scss for why), plus the hand-authored reset/font partials.
+// Referenced by relative path (not the "@ums/design-system" package specifier) because Sass/CSS
+// resolution in this workspace does not go through the TypeScript "paths" mapping ng-packagr's
+// dist output uses for component imports -- this reads the library's own source directly, which
+// is equivalent for plain CSS/Sass partials that have no separate compiled output.
+@use '../../design-system/src/lib/styles/index' as ums;
+@import '../../design-system/src/lib/styles/tokens.css';

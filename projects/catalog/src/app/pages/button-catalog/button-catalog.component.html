@@ -1,0 +1,80 @@
+<section
+  class="catalog-section"
+  data-testid="button-catalog"
+  aria-labelledby="button-catalog-heading"
+>
+  <h2 id="button-catalog-heading">Button family</h2>
+
+  <h3>Variants</h3>
+  <div class="catalog-row" data-testid="button-variants">
+    @for (variant of variants; track variant) {
+      <ums-button [variant]="variant" [attr.data-testid]="'button-' + variant">
+        {{ variant | titlecase }}
+      </ums-button>
+    }
+  </div>
+
+  <h3>Sizes</h3>
+  <div class="catalog-row">
+    <ums-button size="sm" data-testid="button-size-sm">Small</ums-button>
+    <ums-button size="md" data-testid="button-size-md">Medium</ums-button>
+    <ums-button size="lg" data-testid="button-size-lg">Large</ums-button>
+  </div>
+
+  <h3>States</h3>
+  <div class="catalog-row">
+    <ums-button icon="download-simple" data-testid="button-icon-leading">Download</ums-button>
+    <ums-button icon="arrow-right" iconPosition="trailing" data-testid="button-icon-trailing"
+      >Continue</ums-button
+    >
+    <ums-button [loading]="true" data-testid="button-loading">Saving</ums-button>
+    <ums-button [disabled]="true" data-testid="button-disabled">Disabled</ums-button>
+    <ums-button [fullWidth]="true" data-testid="button-full-width">Full width</ums-button>
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    Bengali conjuncts/vowel-signs render meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification" -- so both variants are
+    screenshot-diffed side by side.
+  </p>
+  <div class="catalog-row" data-testid="button-locale-row">
+    <ums-button variant="primary" data-testid="button-label-en">Submit application</ums-button>
+    <ums-button variant="primary" data-testid="button-label-bn">{{ bengaliLongLabel }}</ums-button>
+  </div>
+
+  <h3>Icon Button</h3>
+  <div class="catalog-row">
+    <ums-icon-button icon="pencil-simple" label="Edit" data-testid="icon-button-edit" />
+    <ums-icon-button
+      icon="trash"
+      label="Delete"
+      variant="danger"
+      data-testid="icon-button-delete"
+    />
+  </div>
+
+  <h3>FAB</h3>
+  <div class="catalog-row">
+    <ums-fab icon="plus" label="Create" data-testid="fab-icon-only" />
+    <ums-fab
+      icon="plus"
+      label="Create"
+      extendedLabel="New application"
+      data-testid="fab-extended"
+    />
+  </div>
+
+  <h3>Split Button</h3>
+  <div class="catalog-row">
+    <ums-split-button
+      data-testid="split-button"
+      [expanded]="splitExpanded()"
+      groupLabel="Publish actions"
+      triggerLabel="More publish options"
+      (toggleClick)="toggleSplit()"
+    >
+      Publish
+    </ums-split-button>
+  </div>
+</section>

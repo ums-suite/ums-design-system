@@ -1,0 +1,13 @@
+/* Playwright e2e suite's own TypeScript project -- kept separate from the Angular
+   app/lib tsconfigs (projects/design-system, projects/catalog) since this code runs under
+   Node/Playwright, never in the browser bundle, and needs Node's ambient types. */
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "outDir": "../out-tsc/e2e"
+  },
+  "include": ["**/*.ts", "../playwright.config.ts"]
+}
