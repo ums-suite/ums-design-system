@@ -36,7 +36,7 @@
     "changeset:publish": "npm run build && changeset publish"
   },
   "lint-staged": {
-    "*.{ts,html}": "eslint --fix --max-warnings 0",
+    "*.{ts,html}": "eslint --fix --max-warnings 0 --no-warn-ignored",
     "*.scss": "stylelint --fix",
     "*.{ts,html,scss,css,json,md,yml,yaml}": "prettier --write"
   },
