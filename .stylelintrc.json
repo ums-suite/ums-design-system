@@ -1,0 +1,29 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["./tools/stylelint-rules/no-raw-design-token-css-var.js"],
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**",
+    "coverage/**",
+    "playwright-report/**",
+    "test-results/**",
+    "**/*.generated.ts",
+    "projects/design-system/src/lib/styles/_tokens.scss"
+  ],
+  "rules": {
+    "ums/no-raw-design-token-css-var": null,
+    "selector-class-pattern": null,
+    "scss/at-rule-no-unknown": null,
+    "custom-property-pattern": null,
+    "alpha-value-notation": null
+  },
+  "overrides": [
+    {
+      "files": ["projects/catalog/**/*.scss"],
+      "comment": "The catalog app stands in for a real ums-*-web consuming app in this repo. It should read tokens only through @ums/design-system components/the typed token map, never a raw var(--token) reference by hand -- design-decisions.md 'Token Versioning & Deprecation Policy'.",
+      "rules": {
+        "ums/no-raw-design-token-css-var": true
+      }
+    }
+  ]
+}
