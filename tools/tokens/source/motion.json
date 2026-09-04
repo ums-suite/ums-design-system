@@ -1,0 +1,46 @@
+{
+  "motion": {
+    "fast": {
+      "value": "120ms",
+      "type": "duration",
+      "comment": "Hover/press states, toggle/checkbox flips"
+    },
+    "base": {
+      "value": "200ms",
+      "type": "duration",
+      "comment": "Tab switches, accordion expand, toast enter/exit"
+    },
+    "slow": {
+      "value": "320ms",
+      "type": "duration",
+      "comment": "Modal/drawer open, route transitions, chart data transitions"
+    },
+    "hero": {
+      "value": "480ms",
+      "type": "duration",
+      "comment": "Marketing/alumni hero reveals, staggered card entrances -- public/admission/alumni landing surfaces only"
+    },
+    "reduced": {
+      "value": "20ms",
+      "type": "duration",
+      "comment": "Near-instant crossfade all motion tokens collapse to when prefers-reduced-motion is set"
+    }
+  },
+  "ease": {
+    "standard": {
+      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "type": "cubicBezier",
+      "comment": "Default for most transitions"
+    },
+    "emphasized-in": {
+      "value": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+      "type": "cubicBezier",
+      "comment": "Celebratory/hero reveals"
+    },
+    "emphasized-out": {
+      "value": "cubic-bezier(0.3, 0, 0.8, 0.15)",
+      "type": "cubicBezier",
+      "comment": "Exits/dismissals"
+    }
+  }
+}

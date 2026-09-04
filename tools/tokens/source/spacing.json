@@ -1,0 +1,17 @@
+{
+  "space": {
+    "1": { "value": "4px", "type": "dimension", "comment": "Base unit" },
+    "2": { "value": "8px", "type": "dimension" },
+    "3": {
+      "value": "12px",
+      "type": "dimension",
+      "comment": "Reserved for ums-admin-web's dense table-row padding"
+    },
+    "4": { "value": "16px", "type": "dimension" },
+    "5": { "value": "24px", "type": "dimension" },
+    "6": { "value": "32px", "type": "dimension" },
+    "7": { "value": "48px", "type": "dimension" },
+    "8": { "value": "64px", "type": "dimension" },
+    "9": { "value": "96px", "type": "dimension" }
+  }
+}

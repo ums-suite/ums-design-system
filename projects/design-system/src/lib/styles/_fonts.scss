@@ -1,0 +1,9 @@
+// Hand-authored -- not generated. Web font loading for the requirement-spec.md §4 pairing:
+// Fraunces + Inter (Latin), Noto Serif/Sans Bengali (Bengali, ADR-0011 -- rendered everywhere
+// English does, not a fallback). Import this once from a consuming app's global styles, e.g.
+// `@use '@ums/design-system/styles/fonts';`. Google Fonts is used as the delivery mechanism
+// (both families are Google-maintained and freely embeddable per requirement-spec.md §4) rather
+// than vendoring font binaries into this package, keeping the published package small and the
+// fonts independently cacheable/updatable. `display=swap` avoids invisible text while the font
+// request is in flight.
+@import 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap';

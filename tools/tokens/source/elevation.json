@@ -1,0 +1,34 @@
+{
+  "shadow": {
+    "0": {
+      "value": "none",
+      "dark": "none",
+      "type": "shadow",
+      "comment": "Flat surfaces -- table rows, dense admin backgrounds, so nothing competes visually with data"
+    },
+    "1": {
+      "value": "0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08)",
+      "dark": "inset 0 0 0 1px var(--color-border), 0 1px 2px rgba(0, 0, 0, 0.32)",
+      "type": "shadow",
+      "comment": "Cards, stat tiles. Dark theme substitutes a 1px hairline plus a reduced-opacity black shadow -- drop shadows read poorly on dark surfaces."
+    },
+    "2": {
+      "value": "0 4px 12px rgba(16, 24, 40, 0.1)",
+      "dark": "inset 0 0 0 1px var(--color-border), 0 4px 12px rgba(0, 0, 0, 0.4)",
+      "type": "shadow",
+      "comment": "Dropdowns, popovers, hover-elevated cards"
+    },
+    "3": {
+      "value": "0 12px 32px rgba(16, 24, 40, 0.16)",
+      "dark": "inset 0 0 0 1px var(--color-border), 0 12px 32px rgba(0, 0, 0, 0.48)",
+      "type": "shadow",
+      "comment": "Modals, command palette"
+    },
+    "focus": {
+      "value": "0 0 0 3px rgba(29, 58, 110, 0.35)",
+      "dark": "0 0 0 3px rgba(124, 163, 222, 0.45)",
+      "type": "shadow",
+      "comment": "Visible focus ring, scaled from --color-primary in each theme so it stays legible against both light and dark surfaces"
+    }
+  }
+}
