@@ -1,0 +1,135 @@
+// Token-driven only -- every value below is `var(--...)`, never a literal hex/px. See
+// button.component.ts's class doc for why that matters.
+
+:host {
+  display: inline-block;
+}
+
+:host(.ums-button--full-width) {
+  display: block;
+  inline-size: 100%;
+}
+
+.ums-button__native {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  line-height: var(--type-body-line-height);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+  inline-size: 100%;
+  block-size: 100%;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.ums-button__label {
+  white-space: nowrap;
+}
+
+.ums-button__icon--spin {
+  animation: ums-button-spin var(--motion-slow) linear infinite;
+}
+
+@keyframes ums-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// design-decisions.md "Reduced-Motion State Consistency": an indefinitely-repeating animation
+// has no end state for MotionService's snapInFlightAnimations() to jump to, so it's stopped
+// outright here instead -- higher specificity than _reset.scss's universal `*` rule wins this
+// regardless of stylesheet order, since both sides use !important.
+@media (prefers-reduced-motion: reduce) {
+  .ums-button__icon--spin {
+    animation: none !important;
+  }
+}
+
+// Sizes.
+:host([data-size='sm']) .ums-button__native {
+  padding-block: var(--space-1);
+  padding-inline: var(--space-3);
+  font-size: var(--type-body-sm-font-size);
+}
+
+:host([data-size='md']) .ums-button__native {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-4);
+  font-size: var(--type-body-font-size);
+}
+
+:host([data-size='lg']) .ums-button__native {
+  padding-block: var(--space-3);
+  padding-inline: var(--space-5);
+  font-size: var(--type-body-lg-font-size);
+}
+
+// Variants.
+:host([data-variant='primary']) .ums-button__native {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+:host([data-variant='secondary']) .ums-button__native {
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+
+  &:not(:disabled):hover {
+    box-shadow: var(--shadow-1);
+  }
+}
+
+:host([data-variant='tertiary']) .ums-button__native {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-surface-alt);
+  }
+}
+
+:host([data-variant='ghost']) .ums-button__native {
+  background-color: transparent;
+  color: var(--color-text);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-surface-alt);
+  }
+}
+
+:host([data-variant='danger']) .ums-button__native {
+  background-color: var(--color-danger);
+  color: var(--color-on-danger);
+
+  &:not(:disabled):hover {
+    box-shadow: var(--shadow-1);
+  }
+}

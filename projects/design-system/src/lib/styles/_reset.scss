@@ -1,0 +1,55 @@
+// Hand-authored -- not generated. A minimal, opinionated reset scoped to what this design
+// system's own components rely on -- not a general-purpose reset that fights a consuming app's
+// own page styles. CSS logical properties are used throughout (requirement-spec.md §8
+// RTL-readiness posture: "every component uses CSS logical properties... never -left/-right, as
+// a structural default, so a future RTL locale is a translation/dir addition, not a component
+// rework") even though this reset itself has no directional rules to demonstrate that on.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-font-size);
+  line-height: var(--type-body-line-height);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-inline-size: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+// Respects prefers-reduced-motion at the CSS level for anything not driven by
+// MotionService/reduced-motion.util.ts (design-decisions.md "Reduced-Motion State
+// Consistency"). The shared MotionService additionally snaps any *in-flight* Web Animations API
+// animation to its end state the instant the preference flips -- see reduced-motion.util.ts.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--motion-reduced) !important;
+    transition-duration: var(--motion-reduced) !important;
+    scroll-behavior: auto !important;
+  }
+}

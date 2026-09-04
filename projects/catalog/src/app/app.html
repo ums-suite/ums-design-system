@@ -1,0 +1,22 @@
+<header class="catalog-header">
+  <h1>UMS Design System Catalog</h1>
+  <div class="catalog-header__theme-toggle" role="group" aria-label="Theme">
+    @for (mode of modes; track mode) {
+      <button
+        type="button"
+        class="catalog-header__theme-button"
+        [attr.aria-pressed]="theme.mode() === mode"
+        [attr.data-testid]="'theme-toggle-' + mode"
+        (click)="setTheme(mode)"
+      >
+        {{ mode }}
+      </button>
+    }
+  </div>
+</header>
+
+<main class="catalog-main">
+  <app-button-catalog />
+  <app-icon-catalog />
+  <app-asset-catalog />
+</main>

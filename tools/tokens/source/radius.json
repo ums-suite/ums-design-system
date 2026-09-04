@@ -1,0 +1,10 @@
+{
+  "radius": {
+    "xs": { "value": "4px", "type": "dimension", "comment": "Chips, inputs" },
+    "sm": { "value": "6px", "type": "dimension" },
+    "md": { "value": "10px", "type": "dimension", "comment": "Cards, buttons" },
+    "lg": { "value": "16px", "type": "dimension", "comment": "Modals, hero panels" },
+    "pill": { "value": "999px", "type": "dimension" },
+    "circle": { "value": "50%", "type": "dimension" }
+  }
+}

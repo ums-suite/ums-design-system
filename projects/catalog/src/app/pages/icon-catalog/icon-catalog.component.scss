@@ -1,0 +1,28 @@
+// Page-layout only -- see button-catalog.component.scss's header comment for why no
+// var(--token) reference belongs in this file.
+
+.catalog-section {
+  margin-block-end: 2rem;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.icon-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.icon-grid__label {
+  font-size: 0.75rem;
+  overflow-wrap: break-word;
+}

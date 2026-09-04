@@ -1,0 +1,70 @@
+:host {
+  display: inline-block;
+}
+
+.ums-fab__native {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: none;
+  border-radius: var(--radius-circle);
+  cursor: pointer;
+  box-shadow: var(--shadow-2);
+  transition:
+    box-shadow var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  &:not(:disabled):hover {
+    box-shadow: var(--shadow-3);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+:host([data-size='md']) .ums-fab__native {
+  inline-size: calc(var(--space-6) + var(--space-2));
+  block-size: calc(var(--space-6) + var(--space-2));
+}
+
+:host([data-size='lg']) .ums-fab__native {
+  inline-size: var(--space-7);
+  block-size: var(--space-7);
+}
+
+// The "extended" pattern (icon + visible text) gives up the perfect circle for a pill, and lets
+// its inline-size grow with the label instead of staying fixed-square.
+:host(.ums-fab--extended) .ums-fab__native {
+  inline-size: auto;
+  border-radius: var(--radius-pill);
+  padding-inline: var(--space-5);
+}
+
+.ums-fab__label {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: var(--type-body-font-size);
+  white-space: nowrap;
+}
+
+:host([data-variant='primary']) .ums-fab__native {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+:host([data-variant='secondary']) .ums-fab__native {
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+}

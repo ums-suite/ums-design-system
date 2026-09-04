@@ -1,0 +1,146 @@
+{
+  "primitive": {
+    "color": {
+      "navy-900": { "value": "#142A52" },
+      "navy-700": { "value": "#1D3A6E" },
+      "navy-300": { "value": "#7CA3DE" },
+      "navy-200": { "value": "#9BBBEB" },
+      "gold-700": { "value": "#8A6416" },
+      "gold-600": { "value": "#C9972E" },
+      "gold-400": { "value": "#E4B450" },
+      "gold-300": { "value": "#F0CD7C" },
+      "green-700": { "value": "#1C8753" },
+      "green-400": { "value": "#3FBE7D" },
+      "amber-700": { "value": "#B7791F" },
+      "amber-400": { "value": "#E3A73B" },
+      "red-700": { "value": "#B42318" },
+      "red-400": { "value": "#F0685C" },
+      "cyan-700": { "value": "#0B6E8F" },
+      "cyan-400": { "value": "#4FC1E0" },
+      "neutral-0": { "value": "#FFFFFF" },
+      "neutral-50": { "value": "#F7F8FA" },
+      "neutral-100": { "value": "#EFF2F6" },
+      "neutral-200": { "value": "#DEE3EA" },
+      "neutral-300": { "value": "#CBD3DC" },
+      "neutral-500": { "value": "#5A6472" },
+      "neutral-800": { "value": "#101828" },
+      "neutral-900": { "value": "#0B1220" },
+      "neutral-925": { "value": "#131B2C" },
+      "neutral-950": { "value": "#1B2436" },
+      "neutral-975": { "value": "#26314A" },
+      "neutral-990": { "value": "#333F58" },
+      "neutral-999": { "value": "#9AA6BA" },
+      "neutral-1000": { "value": "#EEF1F6" }
+    }
+  },
+  "color": {
+    "primary": {
+      "value": "{primitive.color.navy-700}",
+      "dark": "{primitive.color.navy-300}",
+      "type": "color",
+      "comment": "Primary CTA, links, active nav, focus ring base"
+    },
+    "primary-hover": {
+      "value": "{primitive.color.navy-900}",
+      "dark": "{primitive.color.navy-200}",
+      "type": "color",
+      "comment": "Hover/pressed state"
+    },
+    "secondary": {
+      "value": "{primitive.color.gold-600}",
+      "dark": "{primitive.color.gold-400}",
+      "type": "color",
+      "comment": "Secondary CTA, achievement badges, campaign/impact highlights, class-year ribbons -- not for body text on light backgrounds, see accent-text"
+    },
+    "accent-text": {
+      "value": "{primitive.color.gold-700}",
+      "dark": "{primitive.color.gold-300}",
+      "type": "color",
+      "comment": "Gold-family text/links where AA text contrast is required"
+    },
+    "success": {
+      "value": "{primitive.color.green-700}",
+      "dark": "{primitive.color.green-400}",
+      "type": "color",
+      "comment": "Payment confirmed, application approved, in-stock/available"
+    },
+    "warning": {
+      "value": "{primitive.color.amber-700}",
+      "dark": "{primitive.color.amber-400}",
+      "type": "color",
+      "comment": "Pending review, expiring deadline, low seat/bed availability -- large text/icon/badge use per its contrast ratio"
+    },
+    "danger": {
+      "value": "{primitive.color.red-700}",
+      "dark": "{primitive.color.red-400}",
+      "type": "color",
+      "comment": "Rejected, overdue, destructive action, validation error"
+    },
+    "info": {
+      "value": "{primitive.color.cyan-700}",
+      "dark": "{primitive.color.cyan-400}",
+      "type": "color",
+      "comment": "Informational banners, draft/in-progress status"
+    },
+    "background": {
+      "value": "{primitive.color.neutral-50}",
+      "dark": "{primitive.color.neutral-900}",
+      "type": "color",
+      "comment": "App/page background"
+    },
+    "surface": {
+      "value": "{primitive.color.neutral-0}",
+      "dark": "{primitive.color.neutral-925}",
+      "type": "color",
+      "comment": "Card, panel, table background"
+    },
+    "surface-alt": {
+      "value": "{primitive.color.neutral-100}",
+      "dark": "{primitive.color.neutral-950}",
+      "type": "color",
+      "comment": "Zebra-striped rows, nested panels"
+    },
+    "border": {
+      "value": "{primitive.color.neutral-200}",
+      "dark": "{primitive.color.neutral-975}",
+      "type": "color",
+      "comment": "Dividers, input borders"
+    },
+    "text": {
+      "value": "{primitive.color.neutral-800}",
+      "dark": "{primitive.color.neutral-1000}",
+      "type": "color",
+      "comment": "Primary text"
+    },
+    "text-muted": {
+      "value": "{primitive.color.neutral-500}",
+      "dark": "{primitive.color.neutral-999}",
+      "type": "color",
+      "comment": "Secondary/caption/meta text"
+    },
+    "disabled": {
+      "value": "{primitive.color.neutral-300}",
+      "dark": "{primitive.color.neutral-990}",
+      "type": "color",
+      "comment": "Disabled controls"
+    },
+    "on-primary": {
+      "value": "{primitive.color.neutral-0}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION (not in requirement-spec.md §3's literal table): text/icon color for content painted on top of a --color-primary fill (Button primary, filled badges). White on the light theme's deep navy primary is safe; dark theme's primary is a light pastel blue, so this flips to dark text -- both derived to satisfy §2 Principle #5 'accessible by construction' / §8 WCAG AA against §3's own primary values."
+    },
+    "on-secondary": {
+      "value": "{primitive.color.neutral-800}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION: text/icon color on a --color-secondary (gold) fill. Both theme's gold values are light/medium enough that dark text passes AA in both -- matches §3's own caveat that gold is 'not used for body text on light backgrounds' in the other direction (white text on gold fails contrast even more badly)."
+    },
+    "on-danger": {
+      "value": "{primitive.color.neutral-0}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION: text/icon color on a --color-danger fill. Light theme's danger red is deep enough for white text; dark theme's is a lighter coral that needs dark text to stay AA -- same reasoning as on-primary."
+    }
+  }
+}

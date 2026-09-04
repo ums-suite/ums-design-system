@@ -1,0 +1,11 @@
+// Convenience entry point for a consuming app's global styles:
+//   @use '@ums/design-system/styles/index' as ums;
+// Forwards the hand-authored partials (font loading, reset, utility classes). This file
+// deliberately does NOT forward tokens.css -- that file defines the CSS custom properties
+// components read at runtime and must be loaded as a plain stylesheet (add it to your
+// angular.json "styles" array, or `@import` it as CSS), not pulled into the Sass module graph,
+// so every consuming app gets exactly one copy of it regardless of how many Sass partials
+// `@use` this index.
+@forward 'fonts';
+@forward 'reset';
+@forward 'utilities';
