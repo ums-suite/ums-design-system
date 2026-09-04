@@ -1,0 +1,21 @@
+// Page-layout only -- see button-catalog.component.scss's header comment for why no
+// var(--token) reference belongs in this file.
+
+.catalog-section {
+  margin-block-end: 2rem;
+}
+
+.asset-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.asset-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.75rem;
+}

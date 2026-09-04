@@ -1,0 +1,16 @@
+<section
+  class="catalog-section"
+  data-testid="asset-catalog"
+  aria-labelledby="asset-catalog-heading"
+>
+  <h2 id="asset-catalog-heading">Asset registry</h2>
+
+  <div class="asset-grid">
+    @for (name of assetNames; track name) {
+      <figure class="asset-grid__item">
+        <ums-asset [name]="name" [width]="160" decorative />
+        <figcaption>{{ name }}</figcaption>
+      </figure>
+    }
+  </div>
+</section>
