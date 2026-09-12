@@ -70,6 +70,10 @@ export * from './lib/tab-bar/tab-bar.component';
 export * from './lib/stepper/stepper.types';
 export * from './lib/stepper/stepper.component';
 
+// Command Palette (DSYS-14)
+export * from './lib/command-palette/command-palette.types';
+export * from './lib/command-palette/command-palette.component';
+
 // Feedback & overlays (DSYS-15)
 export * from './lib/overlay/focus-trap.util';
 export * from './lib/modal/modal.types';
