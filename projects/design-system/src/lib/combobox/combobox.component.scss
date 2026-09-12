@@ -1,0 +1,106 @@
+:host {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+}
+
+.ums-combobox__control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface);
+  block-size: 40px;
+  padding-inline: var(--space-3);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+:host(.ums-combobox--invalid) .ums-combobox__control {
+  border-color: var(--color-danger);
+}
+
+:host(.ums-combobox--disabled) .ums-combobox__control {
+  background-color: var(--color-surface-alt);
+  opacity: 0.7;
+}
+
+.ums-combobox__input {
+  flex: 1;
+  min-inline-size: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-font-size);
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ums-combobox__chevron {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.ums-combobox__sr-status {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ums-combobox__listbox {
+  position: absolute;
+  inset-block-start: calc(100% + var(--space-1));
+  inset-inline: 0;
+  z-index: 20;
+  max-block-size: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-2);
+}
+
+.ums-combobox__option {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-xs);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-font-size);
+  cursor: pointer;
+
+  &--active {
+    background-color: var(--color-surface-alt);
+  }
+
+  &[aria-selected='true'] {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+.ums-combobox__empty {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--type-body-sm-font-size);
+}

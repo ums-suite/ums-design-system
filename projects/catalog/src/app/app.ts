@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ThemeService, type ThemeMode } from '@ums/design-system';
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
+import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 
 /**
@@ -16,7 +17,12 @@ import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.componen
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ButtonCatalogComponent, IconCatalogComponent, AssetCatalogComponent],
+  imports: [
+    ButtonCatalogComponent,
+    FormCatalogComponent,
+    IconCatalogComponent,
+    AssetCatalogComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

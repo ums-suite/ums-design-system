@@ -26,3 +26,13 @@ export * from './lib/button/button.component';
 export * from './lib/icon-button/icon-button.component';
 export * from './lib/fab/fab.component';
 export * from './lib/split-button/split-button.component';
+
+// Form primitives (DSYS-8)
+export * from './lib/form-field/form-field.component';
+export * from './lib/input/input.types';
+export * from './lib/input/input.component';
+export * from './lib/textarea/textarea.component';
+export * from './lib/select/select.types';
+export * from './lib/select/select.component';
+export * from './lib/combobox/combobox.types';
+export * from './lib/combobox/combobox.component';

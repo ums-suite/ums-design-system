@@ -1,0 +1,23 @@
+<div class="ums-select__wrapper">
+  <select
+    class="ums-select__native"
+    [id]="id()"
+    [name]="name()"
+    [disabled]="disabled()"
+    [required]="required()"
+    [attr.aria-invalid]="invalid() ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy() ?? null"
+    [value]="value()"
+    (change)="onChange($event)"
+  >
+    @if (placeholder()) {
+      <option value="" disabled [selected]="!value()">{{ placeholder() }}</option>
+    }
+    @for (option of options(); track option.value) {
+      <option [value]="option.value" [disabled]="option.disabled ?? false">
+        {{ option.label }}
+      </option>
+    }
+  </select>
+  <ums-icon class="ums-select__chevron" name="caret-down" decorative />
+</div>

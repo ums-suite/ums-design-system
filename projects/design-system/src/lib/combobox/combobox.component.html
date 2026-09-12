@@ -1,0 +1,53 @@
+<div class="ums-combobox__control">
+  <input
+    class="ums-combobox__input"
+    type="text"
+    role="combobox"
+    autocomplete="off"
+    [id]="id()"
+    [disabled]="disabled()"
+    [placeholder]="placeholder() ?? ''"
+    [value]="query()"
+    [attr.aria-expanded]="open()"
+    [attr.aria-controls]="listboxId"
+    [attr.aria-activedescendant]="activeOptionId() ?? null"
+    [attr.aria-invalid]="invalid() ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy() ?? null"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (keydown)="onKeydown($event)"
+  />
+  <ums-icon class="ums-combobox__chevron" name="caret-down" decorative />
+</div>
+<span class="ums-combobox__sr-status" aria-live="polite">
+  @if (open()) {
+    {{ filteredOptions().length }} results available
+  }
+</span>
+@if (open()) {
+  <ul
+    class="ums-combobox__listbox"
+    role="listbox"
+    [id]="listboxId"
+    (mousedown)="$event.preventDefault()"
+  >
+    @if (filteredOptions().length === 0) {
+      <li class="ums-combobox__empty">{{ noResultsText() }}</li>
+    }
+    @for (option of filteredOptions(); track option.value; let i = $index) {
+      <li
+        class="ums-combobox__option"
+        role="option"
+        tabindex="-1"
+        [id]="optionId(i)"
+        [attr.aria-selected]="option.value === value()"
+        [class.ums-combobox__option--active]="i === activeIndex()"
+        (click)="selectOption(option)"
+        (keydown.enter)="selectOption(option)"
+      >
+        {{ option.label }}
+      </li>
+    }
+  </ul>
+}

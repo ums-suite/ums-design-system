@@ -1,0 +1,18 @@
+<textarea
+  class="ums-textarea__native"
+  [id]="id()"
+  [name]="name()"
+  [rows]="rows()"
+  [placeholder]="placeholder() ?? ''"
+  [disabled]="disabled()"
+  [readOnly]="readonly()"
+  [required]="required()"
+  [attr.maxlength]="maxLength() ?? null"
+  [attr.aria-invalid]="invalid() ? 'true' : null"
+  [attr.aria-describedby]="ariaDescribedBy() ?? null"
+  (input)="onInput($event)"
+  (blur)="onBlur()"
+  >{{ value() }}</textarea>
+@if (maxLength()) {
+  <p class="ums-textarea__count" aria-live="polite">{{ value().length }} / {{ maxLength() }}</p>
+}

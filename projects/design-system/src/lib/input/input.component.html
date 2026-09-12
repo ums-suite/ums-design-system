@@ -1,0 +1,39 @@
+<div class="ums-input__wrapper">
+  @if (type() === 'search') {
+    <ums-icon class="ums-input__leading-icon" name="magnifying-glass" decorative />
+  }
+  <input
+    class="ums-input__native"
+    [class.ums-input__native--numeric]="type() === 'number'"
+    [id]="id()"
+    [name]="name()"
+    [type]="resolvedType()"
+    [value]="value()"
+    [placeholder]="placeholder() ?? ''"
+    [disabled]="disabled()"
+    [readOnly]="readonly()"
+    [required]="required()"
+    [attr.min]="min() ?? null"
+    [attr.max]="max() ?? null"
+    [attr.step]="step() ?? null"
+    [attr.autocomplete]="autocomplete() ?? null"
+    [attr.aria-invalid]="invalid() ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy() ?? null"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+  @if (type() === 'password') {
+    <button
+      type="button"
+      class="ums-input__action"
+      (click)="togglePasswordVisibility()"
+      [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+    >
+      <ums-icon [name]="showPassword() ? 'eye-slash' : 'eye'" decorative />
+    </button>
+  } @else if (clearable() && value()) {
+    <button type="button" class="ums-input__action" (click)="clear()" aria-label="Clear input">
+      <ums-icon name="x" decorative />
+    </button>
+  }
+</div>
