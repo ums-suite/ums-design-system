@@ -1,0 +1,11 @@
+<ums-asset class="ums-error-state__illustration" [name]="illustration()" width="160" decorative />
+<h3 class="ums-error-state__title">{{ title() }}</h3>
+@if (description()) {
+  <p class="ums-error-state__description">{{ description() }}</p>
+}
+<div class="ums-error-state__actions">
+  <ums-button variant="secondary" (click)="retry.emit()">
+    {{ retryLabel() }}
+  </ums-button>
+  <ng-content />
+</div>

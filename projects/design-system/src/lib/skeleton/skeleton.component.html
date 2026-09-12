@@ -1,0 +1,9 @@
+@if (variant() === 'text') {
+  @for (index of lineIndexes(); track index) {
+    <span
+      class="ums-skeleton__line"
+      [style.inline-size]="lineWidth(index)"
+      [style.block-size]="height()"
+    ></span>
+  }
+}

@@ -5,6 +5,7 @@ import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.co
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
+import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/state-surface-catalog.component';
 
 /**
  * DSYS-18 "Storybook-equivalent catalog" (requirement-spec.md §9): a single-page browsable
@@ -22,6 +23,7 @@ import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.componen
     ButtonCatalogComponent,
     FormCatalogComponent,
     DataDisplayCatalogComponent,
+    StateSurfaceCatalogComponent,
     IconCatalogComponent,
     AssetCatalogComponent,
   ],

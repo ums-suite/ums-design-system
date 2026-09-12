@@ -50,3 +50,10 @@ export * from './lib/breadcrumbs/breadcrumbs.types';
 export * from './lib/breadcrumbs/breadcrumbs.component';
 export * from './lib/timeline/timeline.types';
 export * from './lib/timeline/timeline.component';
+
+// State surfaces (DSYS-17)
+export * from './lib/skeleton/skeleton.types';
+export * from './lib/skeleton/skeleton.component';
+export * from './lib/empty-state/empty-state.component';
+export * from './lib/error-state/error-state.component';
+export * from './lib/offline-banner/offline-banner.component';

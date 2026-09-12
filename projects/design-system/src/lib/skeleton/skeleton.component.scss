@@ -1,0 +1,51 @@
+@keyframes ums-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+:host {
+  display: block;
+}
+
+:host,
+.ums-skeleton__line {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-surface-alt) 25%,
+    var(--color-border) 50%,
+    var(--color-surface-alt) 75%
+  );
+  background-size: 200% 100%;
+  animation: ums-skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+:host([data-variant='circle']) {
+  border-radius: var(--radius-circle);
+}
+
+:host([data-variant='rect']) {
+  border-radius: var(--radius-sm);
+}
+
+.ums-skeleton__line {
+  display: block;
+  border-radius: var(--radius-xs);
+
+  & + & {
+    margin-block-start: var(--space-2);
+  }
+}
+
+// design-decisions.md "Reduced-Motion State Consistency": an indefinitely-repeating shimmer has
+// no end state to jump to, so it's stopped outright -- same reasoning as the Button spinner.
+@media (prefers-reduced-motion: reduce) {
+  :host,
+  .ums-skeleton__line {
+    animation: none !important;
+  }
+}
