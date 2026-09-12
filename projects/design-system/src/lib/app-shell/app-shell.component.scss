@@ -1,0 +1,188 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 100vh;
+  background-color: var(--color-background);
+}
+
+.ums-app-shell__topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-4);
+  background-color: var(--color-surface);
+  border-block-end: 1px solid var(--color-border);
+  box-shadow: var(--shadow-1);
+}
+
+.ums-app-shell__brand {
+  display: flex;
+  align-items: center;
+}
+
+.ums-app-shell__actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ums-app-shell__collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-xs);
+
+  &:hover {
+    background-color: var(--color-surface-alt);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.ums-app-shell__sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Public mode mega-nav.
+.ums-app-shell__mega-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ums-app-shell__mega-item {
+  position: relative;
+}
+
+.ums-app-shell__mega-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  font-weight: 600;
+  cursor: pointer;
+  padding-block: var(--space-2);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-xs);
+  }
+}
+
+.ums-app-shell__mega-panel {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 200px;
+  padding: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-2);
+
+  a {
+    padding-block: var(--space-2);
+    padding-inline: var(--space-3);
+    border-radius: var(--radius-xs);
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--type-body-sm-font-size);
+
+    &:hover {
+      background-color: var(--color-surface-alt);
+    }
+  }
+}
+
+// Operational mode side nav.
+.ums-app-shell__body {
+  display: flex;
+  flex: 1;
+  min-block-size: 0;
+}
+
+.ums-app-shell__side-nav {
+  inline-size: 240px;
+  flex-shrink: 0;
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+  border-inline-end: 1px solid var(--color-border);
+  transition: inline-size var(--motion-base) var(--ease-standard);
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &--collapsed {
+    inline-size: 64px;
+
+    .ums-app-shell__side-nav-label {
+      display: none;
+    }
+  }
+}
+
+.ums-app-shell__side-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--color-surface-alt);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  &--active {
+    background-color: var(--color-surface-alt);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+.ums-app-shell__content {
+  flex: 1;
+  min-inline-size: 0;
+  padding: var(--space-5);
+}

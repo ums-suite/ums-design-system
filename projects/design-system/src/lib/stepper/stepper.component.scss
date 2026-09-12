@@ -1,0 +1,94 @@
+:host {
+  display: block;
+}
+
+.ums-stepper__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ums-stepper__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+
+  &:first-child .ums-stepper__connector {
+    visibility: hidden;
+  }
+}
+
+.ums-stepper__connector {
+  position: absolute;
+  inset-block-start: 15px;
+  inset-inline-start: -50%;
+  inline-size: 100%;
+  block-size: 2px;
+  background-color: var(--color-border);
+  z-index: 0;
+}
+
+.ums-stepper__step[data-status='complete'] .ums-stepper__connector {
+  background-color: var(--color-success);
+}
+
+.ums-stepper__marker {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: var(--radius-circle);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-feature-settings: var(--font-feature-numeric);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+button.ums-stepper__marker {
+  cursor: pointer;
+}
+
+.ums-stepper__step[data-status='complete'] .ums-stepper__marker {
+  border-color: var(--color-success);
+  background-color: var(--color-success);
+  color: var(--color-on-success);
+}
+
+.ums-stepper__step[data-status='current'] .ums-stepper__marker {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.ums-stepper__text {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: var(--space-2);
+  max-inline-size: 140px;
+}
+
+.ums-stepper__label {
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.ums-stepper__description {
+  margin-block-start: 2px;
+  font-size: var(--type-label-font-size);
+  color: var(--color-text-muted);
+}

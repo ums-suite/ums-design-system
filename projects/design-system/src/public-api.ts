@@ -57,3 +57,11 @@ export * from './lib/skeleton/skeleton.component';
 export * from './lib/empty-state/empty-state.component';
 export * from './lib/error-state/error-state.component';
 export * from './lib/offline-banner/offline-banner.component';
+
+// Navigation (DSYS-13)
+export * from './lib/app-shell/app-shell.types';
+export * from './lib/app-shell/app-shell.component';
+export * from './lib/tab-bar/tab-bar.types';
+export * from './lib/tab-bar/tab-bar.component';
+export * from './lib/stepper/stepper.types';
+export * from './lib/stepper/stepper.component';

@@ -1,0 +1,61 @@
+<section
+  class="catalog-section"
+  data-testid="navigation-catalog"
+  aria-labelledby="navigation-catalog-heading"
+>
+  <h2 id="navigation-catalog-heading">Navigation</h2>
+
+  <h3>App shell -- operational mode (top bar + collapsible side nav)</h3>
+  <div class="catalog-shell-frame" data-testid="app-shell-operational">
+    <ums-app-shell mode="operational" [navItems]="operationalNavItems">
+      <span umsAppShellBrand>UMS Admin</span>
+      <span umsAppShellActions>Registrar</span>
+      <p>Operational content area.</p>
+    </ums-app-shell>
+  </div>
+
+  <h3>App shell -- public mode (top bar + mega-menu)</h3>
+  <div class="catalog-shell-frame" data-testid="app-shell-public">
+    <ums-app-shell mode="public" [navItems]="publicNavItems">
+      <span umsAppShellBrand>UMS</span>
+      <span umsAppShellActions>Apply now</span>
+      <p>Public site content area.</p>
+    </ums-app-shell>
+  </div>
+
+  <h3>Tab bar</h3>
+  <div class="catalog-row" data-testid="tab-bar-row">
+    <div>
+      <ums-tab-bar
+        #bar="umsTabBar"
+        [items]="tabItems"
+        [selectedIndex]="selectedTabIndex()"
+        (selectedIndexChange)="selectedTabIndex.set($event)"
+      />
+      @for (item of tabItems; track item.label; let i = $index) {
+        <div
+          [id]="bar.panelId(i)"
+          role="tabpanel"
+          [attr.aria-labelledby]="bar.tabId(i)"
+          [hidden]="i !== selectedTabIndex()"
+        >
+          {{ item.label }} panel content.
+        </div>
+      }
+    </div>
+  </div>
+
+  <h3>Stepper</h3>
+  <div class="catalog-row" data-testid="stepper-row">
+    <ums-stepper [steps]="wizardSteps" [currentIndex]="currentStepIndex()" />
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    Long-form Bengali step labels render meaningfully longer than the English originals --
+    design-decisions.md "Locale-Safe Component Sizing Verification".
+  </p>
+  <div class="catalog-row" data-testid="navigation-locale-row">
+    <ums-stepper [steps]="bengaliWizardSteps" [currentIndex]="1" data-testid="stepper-bn" />
+  </div>
+</section>

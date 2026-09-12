@@ -1,0 +1,21 @@
+<div class="ums-tab-bar__list" role="tablist">
+  @for (item of items(); track item.label; let i = $index) {
+    <button
+      type="button"
+      role="tab"
+      class="ums-tab-bar__tab"
+      [id]="tabId(i)"
+      [attr.aria-selected]="i === selectedIndex()"
+      [attr.aria-controls]="panelId(i)"
+      [attr.tabindex]="i === selectedIndex() ? 0 : -1"
+      [disabled]="item.disabled ?? false"
+      (click)="select(i)"
+      (keydown)="onKeydown($event, i)"
+    >
+      @if (item.icon) {
+        <ums-icon [name]="item.icon" decorative />
+      }
+      {{ item.label }}
+    </button>
+  }
+</div>

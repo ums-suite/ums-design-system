@@ -5,6 +5,7 @@ import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.co
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
+import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
 import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/state-surface-catalog.component';
 
 /**
@@ -24,6 +25,7 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
     FormCatalogComponent,
     DataDisplayCatalogComponent,
     StateSurfaceCatalogComponent,
+    NavigationCatalogComponent,
     IconCatalogComponent,
     AssetCatalogComponent,
   ],
