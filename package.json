@@ -41,6 +41,7 @@
     "*.{ts,html,scss,css,json,md,yml,yaml}": "prettier --write"
   },
   "dependencies": {
+    "@angular/cdk": "^22.1.6",
     "@angular/common": "^22.1.0",
     "@angular/compiler": "^22.1.0",
     "@angular/core": "^22.1.0",

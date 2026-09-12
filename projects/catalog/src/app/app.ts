@@ -3,6 +3,7 @@ import { ThemeService, UmsToastContainerComponent, type ThemeMode } from '@ums/d
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
+import { DataTableCatalogComponent } from './pages/data-table-catalog/data-table-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
@@ -25,6 +26,7 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
     ButtonCatalogComponent,
     FormCatalogComponent,
     DataDisplayCatalogComponent,
+    DataTableCatalogComponent,
     StateSurfaceCatalogComponent,
     NavigationCatalogComponent,
     OverlayCatalogComponent,

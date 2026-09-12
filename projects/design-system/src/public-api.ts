@@ -51,6 +51,10 @@ export * from './lib/breadcrumbs/breadcrumbs.component';
 export * from './lib/timeline/timeline.types';
 export * from './lib/timeline/timeline.component';
 
+// Data Table (DSYS-12)
+export * from './lib/data-table/data-table.types';
+export * from './lib/data-table/data-table.component';
+
 // State surfaces (DSYS-17)
 export * from './lib/skeleton/skeleton.types';
 export * from './lib/skeleton/skeleton.component';

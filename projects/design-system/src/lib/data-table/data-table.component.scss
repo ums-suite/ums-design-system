@@ -1,0 +1,130 @@
+:host {
+  display: block;
+}
+
+.ums-data-table__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-end: var(--space-2);
+}
+
+.ums-data-table__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.ums-data-table__header {
+  display: grid;
+  border-block-end: 1px solid var(--color-border);
+}
+
+.ums-data-table__row {
+  display: grid;
+  align-items: stretch;
+  border-block-end: 1px solid var(--color-border);
+
+  &:last-child {
+    border-block-end: none;
+  }
+}
+
+.ums-data-table__row--header {
+  border-block-end: none;
+}
+
+.ums-data-table__row--selected {
+  background-color: var(--color-surface-alt);
+}
+
+.ums-data-table__cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ums-data-table__cell--header {
+  font-size: var(--type-label-font-size);
+  font-weight: var(--type-label-font-weight);
+  letter-spacing: var(--type-label-letter-spacing);
+  text-transform: var(--type-label-text-transform);
+  color: var(--color-text-muted);
+}
+
+.ums-data-table__cell--selection {
+  justify-content: center;
+  padding-inline: var(--space-2);
+}
+
+.ums-data-table__cell--empty {
+  grid-column: 1 / -1;
+  justify-content: center;
+  padding-block: var(--space-6);
+}
+
+.ums-data-table__sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-xs);
+  }
+}
+
+.ums-data-table__resize-handle {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  inline-size: 6px;
+  cursor: col-resize;
+  touch-action: none;
+
+  &:hover {
+    background-color: var(--color-border);
+  }
+}
+
+.ums-data-table__filter-input {
+  inline-size: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  padding: var(--space-1) var(--space-2);
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.ums-data-table__viewport {
+  inline-size: 100%;
+}
+
+// Pinned cells stay opaque over the row(s) scrolling underneath them, and sit above the resize
+// handle/other cells while doing so.
+.ums-data-table__cell--pinned {
+  z-index: 1;
+}

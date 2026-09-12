@@ -1,0 +1,49 @@
+<section
+  class="catalog-section"
+  data-testid="data-table-catalog"
+  aria-labelledby="data-table-catalog-heading"
+>
+  <h2 id="data-table-catalog-heading">Data Table</h2>
+
+  <p>
+    60 rows, virtualized via CDK's <code>cdk-virtual-scroll-viewport</code>. "Program" is pinned to
+    the logical start edge; try resizing a column by dragging its right edge, sorting a sortable
+    column, and filtering by Name/Program.
+  </p>
+
+  <div class="data-table-catalog__narrow-viewport" data-testid="data-table-row">
+    <ums-data-table
+      data-testid="data-table"
+      caption="Admission applicants"
+      [columns]="columns"
+      [rows]="rows()"
+      [rowId]="rowId"
+      selectionMode="multiple"
+      [itemSizePx]="44"
+      viewportHeight="360px"
+      emptyMessage="No applicants match the current filters"
+      (selectionChange)="onSelectionChange($event)"
+      (sortChange)="onSortChange($event)"
+      (filterChange)="onFilterChange($event)"
+    />
+  </div>
+
+  <p data-testid="data-table-selection-summary">Selected rows: {{ lastSelection.length }}</p>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    A long-form Bengali applicant name renders meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification".
+  </p>
+  <div data-testid="data-table-locale-row">
+    <ums-data-table
+      data-testid="data-table-bn"
+      caption="Bengali applicant names"
+      [columns]="columns"
+      [rows]="bengaliRows()"
+      [rowId]="rowId"
+      [itemSizePx]="44"
+      viewportHeight="140px"
+    />
+  </div>
+</section>
