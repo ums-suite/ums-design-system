@@ -1,0 +1,68 @@
+<section
+  class="catalog-section"
+  data-testid="date-time-catalog"
+  aria-labelledby="date-time-catalog-heading"
+>
+  <h2 id="date-time-catalog-heading">Date/Time pickers, OTP input, File upload</h2>
+
+  <h3>Date picker</h3>
+  <div class="catalog-row" data-testid="date-picker-row">
+    <ums-date-picker
+      data-testid="date-picker"
+      [value]="dateValue()"
+      (valueChange)="dateValue.set($event)"
+    />
+  </div>
+
+  <h3>Date-range picker</h3>
+  <div class="catalog-row" data-testid="date-range-picker-row">
+    <ums-date-range-picker
+      data-testid="date-range-picker"
+      [start]="range().start"
+      [end]="range().end"
+      (rangeChange)="range.set($event)"
+    />
+  </div>
+
+  <h3>Time picker</h3>
+  <div class="catalog-row" data-testid="time-picker-row">
+    <ums-time-picker
+      data-testid="time-picker"
+      label="Preferred interview time"
+      [value]="timeValue()"
+      (valueChange)="timeValue.set($event)"
+    />
+  </div>
+
+  <h3>OTP input</h3>
+  <div class="catalog-row" data-testid="otp-input-row">
+    <ums-otp-input
+      data-testid="otp-input"
+      [length]="6"
+      [value]="otpValue()"
+      (valueChange)="otpValue.set($event)"
+      (completed)="otpCompleted.set($event)"
+    />
+    <p data-testid="otp-completed">Completed: {{ otpCompleted() ?? 'not yet' }}</p>
+  </div>
+
+  <h3>File upload</h3>
+  <div class="catalog-row" data-testid="file-upload-row">
+    <ums-file-upload
+      data-testid="file-upload"
+      [files]="files()"
+      (filesSelected)="onFilesSelected($event)"
+      (removeRequested)="onRemove($event)"
+      (retryRequested)="onRetry($event)"
+    />
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    A long-form Bengali dropzone hint renders meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification".
+  </p>
+  <div class="catalog-row" data-testid="date-time-locale-row">
+    <ums-file-upload data-testid="file-upload-bn" [hint]="bengaliHint" />
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<button
+  type="button"
+  class="ums-file-upload__dropzone"
+  [class.ums-file-upload__dropzone--dragging]="isDraggingOver()"
+  [disabled]="disabled()"
+  (click)="openPicker()"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave()"
+  (drop)="onDrop($event)"
+>
+  <ums-icon name="upload-simple" decorative />
+  <span>{{ hint() }}</span>
+</button>
+
+<input
+  #fileInput
+  type="file"
+  class="ums-visually-hidden"
+  tabindex="-1"
+  aria-label="Choose files to upload"
+  [attr.accept]="accept() ?? null"
+  [multiple]="multiple()"
+  [disabled]="disabled()"
+  (change)="onFileInputChange($event)"
+/>
+
+@if (files().length > 0) {
+  <ul class="ums-file-upload__list">
+    @for (file of files(); track file.id) {
+      <li class="ums-file-upload__item">
+        <ums-icon name="file-text" decorative />
+        <div class="ums-file-upload__item-body">
+          <div class="ums-file-upload__item-header">
+            <span class="ums-file-upload__item-name">{{ file.name }}</span>
+            <span class="ums-file-upload__item-size">{{ formatSize(file.sizeBytes) }}</span>
+          </div>
+
+          @switch (file.status) {
+            @case ('success') {
+              <span class="ums-file-upload__status ums-file-upload__status--success">
+                <ums-icon name="check-circle" decorative />
+                Uploaded
+              </span>
+            }
+            @case ('error') {
+              <span class="ums-file-upload__status ums-file-upload__status--error">
+                <ums-icon name="warning-circle" decorative />
+                {{ file.errorMessage ?? 'Upload failed' }}
+              </span>
+              <button type="button" class="ums-file-upload__retry" (click)="retry(file)">
+                Retry
+              </button>
+            }
+            @default {
+              <div
+                class="ums-file-upload__progress"
+                role="progressbar"
+                [attr.aria-valuenow]="file.progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-label]="'Upload progress for ' + file.name"
+              >
+                <div
+                  class="ums-file-upload__progress-fill"
+                  [style.inline-size.%]="file.progress"
+                ></div>
+              </div>
+            }
+          }
+        </div>
+        <button
+          type="button"
+          class="ums-file-upload__remove"
+          [attr.aria-label]="'Remove ' + file.name"
+          (click)="remove(file)"
+        >
+          <ums-icon name="x" decorative />
+        </button>
+      </li>
+    }
+  </ul>
+}

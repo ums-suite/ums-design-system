@@ -70,6 +70,16 @@ export * from './lib/tab-bar/tab-bar.component';
 export * from './lib/stepper/stepper.types';
 export * from './lib/stepper/stepper.component';
 
+// Date/Time pickers, OTP input, File upload (DSYS-9)
+export * from './lib/date-picker/calendar.util';
+export * from './lib/date-picker/date-picker.component';
+export * from './lib/date-range-picker/date-range-picker.types';
+export * from './lib/date-range-picker/date-range-picker.component';
+export * from './lib/time-picker/time-picker.component';
+export * from './lib/otp-input/otp-input.component';
+export * from './lib/file-upload/file-upload.types';
+export * from './lib/file-upload/file-upload.component';
+
 // Command Palette (DSYS-14)
 export * from './lib/command-palette/command-palette.types';
 export * from './lib/command-palette/command-palette.component';

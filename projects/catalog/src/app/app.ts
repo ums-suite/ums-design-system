@@ -5,6 +5,7 @@ import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.co
 import { CommandPaletteCatalogComponent } from './pages/command-palette-catalog/command-palette-catalog.component';
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { DataTableCatalogComponent } from './pages/data-table-catalog/data-table-catalog.component';
+import { DateTimeCatalogComponent } from './pages/date-time-catalog/date-time-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
@@ -28,6 +29,7 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
     FormCatalogComponent,
     DataDisplayCatalogComponent,
     DataTableCatalogComponent,
+    DateTimeCatalogComponent,
     StateSurfaceCatalogComponent,
     NavigationCatalogComponent,
     OverlayCatalogComponent,
