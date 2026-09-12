@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ThemeService, type ThemeMode } from '@ums/design-system';
+import { ThemeService, UmsToastContainerComponent, type ThemeMode } from '@ums/design-system';
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
+import { OverlayCatalogComponent } from './pages/overlay-catalog/overlay-catalog.component';
 import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/state-surface-catalog.component';
 
 /**
@@ -26,8 +27,10 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
     DataDisplayCatalogComponent,
     StateSurfaceCatalogComponent,
     NavigationCatalogComponent,
+    OverlayCatalogComponent,
     IconCatalogComponent,
     AssetCatalogComponent,
+    UmsToastContainerComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

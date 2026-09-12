@@ -3,6 +3,7 @@
   [id]="id()"
   [name]="name()"
   [rows]="rows()"
+  [value]="value()"
   [placeholder]="placeholder() ?? ''"
   [disabled]="disabled()"
   [readOnly]="readonly()"
@@ -12,7 +13,7 @@
   [attr.aria-describedby]="ariaDescribedBy() ?? null"
   (input)="onInput($event)"
   (blur)="onBlur()"
-  >{{ value() }}</textarea>
+></textarea>
 @if (maxLength()) {
   <p class="ums-textarea__count" aria-live="polite">{{ value().length }} / {{ maxLength() }}</p>
 }
