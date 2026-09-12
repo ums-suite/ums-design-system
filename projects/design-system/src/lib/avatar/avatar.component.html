@@ -1,0 +1,7 @@
+@if (imageUrl()) {
+  <img class="ums-avatar__image" [src]="imageUrl()" alt="" />
+} @else if (initials()) {
+  <span class="ums-avatar__initials">{{ initials() }}</span>
+} @else {
+  <ums-icon class="ums-avatar__fallback-icon" name="user" decorative />
+}

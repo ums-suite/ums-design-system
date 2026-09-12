@@ -1,0 +1,65 @@
+<section
+  class="catalog-section"
+  data-testid="data-display-catalog"
+  aria-labelledby="data-display-catalog-heading"
+>
+  <h2 id="data-display-catalog-heading">Data display primitives</h2>
+
+  <h3>Card variants</h3>
+  <div class="catalog-row" data-testid="card-row">
+    <ums-card title="Recent Applications" subtitle="Last 7 days" data-testid="card-content">
+      <p>42 new applications received this week.</p>
+    </ums-card>
+    <ums-card
+      variant="stat"
+      statLabel="Total Enrolled"
+      statValue="12,480"
+      statDelta="4.2% vs last term"
+      statTrend="up"
+      data-testid="card-stat"
+    />
+    <ums-card
+      variant="profile"
+      profileName="Dr. Farah Hossain"
+      profileRole="Registrar"
+      data-testid="card-profile"
+    />
+  </div>
+
+  <h3>Badge / Status Chip</h3>
+  <div class="catalog-row" data-testid="badge-row">
+    <ums-badge variant="success" data-testid="badge-success">Approved</ums-badge>
+    <ums-badge variant="warning" data-testid="badge-warning">Pending review</ums-badge>
+    <ums-badge variant="danger" data-testid="badge-danger">Overdue</ums-badge>
+    <ums-badge variant="info" data-testid="badge-info">Draft</ums-badge>
+    <ums-badge variant="neutral" data-testid="badge-neutral">Archived</ums-badge>
+  </div>
+
+  <h3>Avatar &amp; Avatar group</h3>
+  <div class="catalog-row" data-testid="avatar-row">
+    <ums-avatar name="Fahim Rahman" data-testid="avatar-initials" />
+    <ums-avatar data-testid="avatar-fallback" />
+    <ums-avatar-group [members]="groupMembers" [max]="3" data-testid="avatar-group" />
+  </div>
+
+  <h3>Breadcrumbs</h3>
+  <div class="catalog-row" data-testid="breadcrumbs-row">
+    <ums-breadcrumbs [items]="breadcrumbItems" />
+  </div>
+
+  <h3>Timeline</h3>
+  <div class="catalog-row" data-testid="timeline-row">
+    <ums-timeline [entries]="timelineEntries" />
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    A long-form Bengali label/name renders meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification" -- screenshot-diffed here
+    alongside the English variants above.
+  </p>
+  <div class="catalog-row" data-testid="data-display-locale-row">
+    <ums-badge variant="warning" data-testid="badge-label-bn">{{ bengaliBadgeLabel }}</ums-badge>
+    <ums-card variant="profile" [profileName]="bengaliProfileName" data-testid="card-profile-bn" />
+  </div>
+</section>

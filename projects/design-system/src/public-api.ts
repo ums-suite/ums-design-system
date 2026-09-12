@@ -36,3 +36,17 @@ export * from './lib/select/select.types';
 export * from './lib/select/select.component';
 export * from './lib/combobox/combobox.types';
 export * from './lib/combobox/combobox.component';
+
+// Data display primitives (DSYS-11)
+export * from './lib/card/card.types';
+export * from './lib/card/card.component';
+export * from './lib/badge/badge.types';
+export * from './lib/badge/badge.component';
+export * from './lib/avatar/avatar.types';
+export * from './lib/avatar/avatar.component';
+export * from './lib/avatar-group/avatar-group.types';
+export * from './lib/avatar-group/avatar-group.component';
+export * from './lib/breadcrumbs/breadcrumbs.types';
+export * from './lib/breadcrumbs/breadcrumbs.component';
+export * from './lib/timeline/timeline.types';
+export * from './lib/timeline/timeline.component';

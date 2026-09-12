@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ThemeService, type ThemeMode } from '@ums/design-system';
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
+import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 
@@ -20,6 +21,7 @@ import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.componen
   imports: [
     ButtonCatalogComponent,
     FormCatalogComponent,
+    DataDisplayCatalogComponent,
     IconCatalogComponent,
     AssetCatalogComponent,
   ],
