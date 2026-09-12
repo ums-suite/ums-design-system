@@ -1,0 +1,22 @@
+@for (toast of toastService.toasts(); track toast.id) {
+  <div class="ums-toast" [attr.data-variant]="toast.variant">
+    <span class="ums-toast__message">{{ toast.message }}</span>
+    @if (toast.actionLabel) {
+      <button
+        type="button"
+        class="ums-toast__action"
+        (click)="toastService.triggerAction(toast.id)"
+      >
+        {{ toast.actionLabel }}
+      </button>
+    }
+    <button
+      type="button"
+      class="ums-toast__dismiss"
+      (click)="toastService.dismiss(toast.id)"
+      aria-label="Dismiss notification"
+    >
+      <ums-icon name="x" [size]="14" decorative />
+    </button>
+  </div>
+}

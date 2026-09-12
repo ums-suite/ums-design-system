@@ -1,0 +1,32 @@
+// Hand-authored -- not generated. UmsTooltipDirective (DSYS-15) appends its floating tooltip
+// element directly to `document.body` via plain DOM APIs (there is no host *component* template
+// for Angular's emulated view encapsulation to scope styles into), so its visual style has to
+// live in this package's global stylesheet rather than a component .scss file -- forwarded from
+// styles/index.scss, the same required global include as _reset.scss/_utilities.scss.
+
+.ums-tooltip {
+  position: fixed;
+  z-index: 300;
+  max-inline-size: 240px;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  line-height: var(--type-body-sm-line-height);
+  box-shadow: var(--shadow-2);
+  pointer-events: none;
+  animation: ums-tooltip-fade-in var(--motion-fast) var(--ease-standard);
+}
+
+@keyframes ums-tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

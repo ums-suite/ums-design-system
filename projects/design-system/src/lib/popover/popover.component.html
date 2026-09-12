@@ -1,0 +1,15 @@
+<button
+  type="button"
+  class="ums-popover__trigger"
+  [attr.aria-expanded]="open()"
+  [attr.aria-controls]="panelId"
+  [attr.aria-label]="label() ?? null"
+  (click)="toggle()"
+>
+  <ng-content select="[umsPopoverTrigger]" />
+</button>
+@if (open()) {
+  <div class="ums-popover__panel" [id]="panelId" role="dialog" [attr.aria-label]="label() ?? null">
+    <ng-content select="[umsPopoverContent]" />
+  </div>
+}

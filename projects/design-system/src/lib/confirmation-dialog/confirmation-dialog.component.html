@@ -1,0 +1,23 @@
+<ums-modal [open]="open()" [title]="title()" size="sm" (closed)="onCancel()">
+  @if (description()) {
+    <p class="ums-confirmation-dialog__description">{{ description() }}</p>
+  }
+  <label class="ums-confirmation-dialog__reason-label" [for]="reasonFieldId">
+    {{ reasonLabel() }}
+    <span class="ums-confirmation-dialog__required" aria-hidden="true">*</span>
+  </label>
+  <ums-textarea
+    [id]="reasonFieldId"
+    [required]="true"
+    [placeholder]="reasonPlaceholder()"
+    [value]="reason()"
+    (valueChange)="reason.set($event)"
+  />
+
+  <div umsModalFooter>
+    <ums-button variant="ghost" (click)="onCancel()">{{ cancelLabel() }}</ums-button>
+    <ums-button variant="danger" [disabled]="!canConfirm()" (click)="onConfirm()">
+      {{ confirmLabel() }}
+    </ums-button>
+  </div>
+</ums-modal>

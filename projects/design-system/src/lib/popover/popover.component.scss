@@ -1,0 +1,52 @@
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+.ums-popover__trigger {
+  display: inline-flex;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-xs);
+  }
+}
+
+.ums-popover__panel {
+  position: absolute;
+  inset-block-start: calc(100% + var(--space-2));
+  inset-inline-start: 0;
+  z-index: 30;
+  min-inline-size: 220px;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  color: var(--color-text);
+  font-size: var(--type-body-sm-font-size);
+  animation: ums-popover-enter var(--motion-fast) var(--ease-standard);
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+@keyframes ums-popover-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

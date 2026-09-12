@@ -65,3 +65,17 @@ export * from './lib/tab-bar/tab-bar.types';
 export * from './lib/tab-bar/tab-bar.component';
 export * from './lib/stepper/stepper.types';
 export * from './lib/stepper/stepper.component';
+
+// Feedback & overlays (DSYS-15)
+export * from './lib/overlay/focus-trap.util';
+export * from './lib/modal/modal.types';
+export * from './lib/modal/modal.component';
+export * from './lib/drawer/drawer.types';
+export * from './lib/drawer/drawer.component';
+export * from './lib/toast/toast.types';
+export * from './lib/toast/toast.service';
+export * from './lib/toast/toast-container.component';
+export * from './lib/tooltip/tooltip.types';
+export * from './lib/tooltip/tooltip.directive';
+export * from './lib/popover/popover.component';
+export * from './lib/confirmation-dialog/confirmation-dialog.component';
