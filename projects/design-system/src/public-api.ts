@@ -80,6 +80,8 @@ export * from './lib/otp-input/otp-input.component';
 export * from './lib/file-upload/file-upload.types';
 export * from './lib/file-upload/file-upload.component';
 
+// Data Visualization (DSYS-16) -- exports added incrementally as each chart component lands.
+
 // Command Palette (DSYS-14)
 export * from './lib/command-palette/command-palette.types';
 export * from './lib/command-palette/command-palette.component';
