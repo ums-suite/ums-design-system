@@ -10,5 +10,6 @@
       "input": "src/lib/styles",
       "output": "styles"
     }
-  ]
+  ],
+  "allowedNonPeerDependencies": ["echarts"]
 }

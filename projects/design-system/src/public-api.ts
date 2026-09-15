@@ -80,7 +80,16 @@ export * from './lib/otp-input/otp-input.component';
 export * from './lib/file-upload/file-upload.types';
 export * from './lib/file-upload/file-upload.component';
 
-// Data Visualization (DSYS-16) -- exports added incrementally as each chart component lands.
+// Data Visualization (DSYS-16)
+export * from './lib/charts/chart.types';
+export * from './lib/charts/line-chart/line-chart.component';
+export * from './lib/charts/bar-chart/bar-chart.component';
+export * from './lib/charts/area-chart/area-chart.component';
+export * from './lib/charts/sparkline/sparkline.component';
+export * from './lib/charts/donut-chart/donut-chart.component';
+export * from './lib/charts/progress-ring/progress-ring.component';
+export * from './lib/charts/progress-bar/progress-bar.component';
+export * from './lib/charts/heatmap-calendar/heatmap-calendar.component';
 
 // Command Palette (DSYS-14)
 export * from './lib/command-palette/command-palette.types';
