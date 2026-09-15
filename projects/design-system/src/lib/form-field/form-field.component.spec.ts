@@ -48,6 +48,11 @@ describe('UmsFormFieldComponent', () => {
     expect(label().getAttribute('for')).toBe(input().id);
   });
 
+  it('exposes labelId() matching the rendered label id (DSYS-10: for a non-labelable projected control)', () => {
+    expect(label().id).toBeTruthy();
+    expect(label().id).toContain('-label');
+  });
+
   it('shows the required asterisk when [required]', () => {
     host.required.set(true);
     fixture.detectChanges();

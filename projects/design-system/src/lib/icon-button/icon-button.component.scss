@@ -71,3 +71,10 @@
   background-color: var(--color-danger);
   color: var(--color-on-danger);
 }
+
+// DSYS-10: a toggled-on toolbar button (e.g. Rich Text Editor's active Bold/Italic/Link state).
+// `aria-pressed` on the native button already carries the semantics; this is the paired visual.
+:host(.ums-icon-button--pressed) .ums-icon-button__native {
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+}

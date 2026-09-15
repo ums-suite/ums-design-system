@@ -12,11 +12,13 @@ import { UmsIconButtonComponent } from './icon-button.component';
     icon="trash"
     label="Delete row"
     [disabled]="disabled()"
+    [pressed]="pressed()"
     (click)="onClick()"
   />`,
 })
 class HostComponent {
   readonly disabled = signal(false);
+  readonly pressed = signal<boolean | undefined>(undefined);
   clickCount = 0;
   onClick(): void {
     this.clickCount++;
@@ -56,5 +58,19 @@ describe('UmsIconButtonComponent', () => {
     expect(nativeButton().disabled).toBeTrue();
     nativeButton().click();
     expect(host.clickCount).toBe(1);
+  });
+
+  it('omits aria-pressed entirely when not a toggle (the default)', () => {
+    expect(nativeButton().hasAttribute('aria-pressed')).toBeFalse();
+  });
+
+  it('reflects [pressed] as aria-pressed for a toggle-style toolbar button', () => {
+    host.pressed.set(false);
+    fixture.detectChanges();
+    expect(nativeButton().getAttribute('aria-pressed')).toBe('false');
+
+    host.pressed.set(true);
+    fixture.detectChanges();
+    expect(nativeButton().getAttribute('aria-pressed')).toBe('true');
   });
 });

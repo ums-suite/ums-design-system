@@ -1,6 +1,6 @@
 {
   "$comment": "DSYS-6 icon subset. Phosphor Icons ships ~9,000 icons; requirement-spec.md §10 item 2 explicitly allows wrapping a 'well-chosen practical subset... rather than literally all' as long as the criterion is documented (see criterion below) and the union is generated, typed, and codegen-extensible -- adding an icon later is a one-line addition here plus `npm run icons:build`, never a hand-drawn inline <svg> in a consuming app.",
-  "criterion": "Every icon a UMS screen plausibly needs across the six apps' named surfaces in requirement-spec.md §6 and each app's own component inventory, grouped by domain: generic CRUD/navigation chrome (search, filter, sort, close, add, edit, delete, export...), academic/people (student, faculty, course, exam, certificate...), status/feedback (matching the semantic color tokens in §3: success/warning/danger/info), communication, files, time, finance, places, security, and basic data-viz affordances (chart type pickers for a future DSYS-16). Anything not on this list and not one of these domains is deliberately deferred rather than speculatively included -- extend this file when a real component ticket needs a new one.",
+  "criterion": "Every icon a UMS screen plausibly needs across the six apps' named surfaces in requirement-spec.md §6 and each app's own component inventory, grouped by domain: generic CRUD/navigation chrome (search, filter, sort, close, add, edit, delete, export...), academic/people (student, faculty, course, exam, certificate...), status/feedback (matching the semantic color tokens in §3: success/warning/danger/info), communication, files, time, finance, places, security, basic data-viz affordances (chart type pickers, DSYS-16), and rich-text toolbar affordances (bold/italic/underline/strikethrough, list/quote/code block formatting, link insert/remove, undo/redo -- DSYS-10). Anything not on this list and not one of these domains is deliberately deferred rather than speculatively included -- extend this file when a real component ticket needs a new one.",
   "weights": ["regular", "duotone"],
   "icons": [
     "arrow-left",
@@ -80,6 +80,18 @@
     "question",
     "chart-bar",
     "chart-line",
-    "chart-pie"
+    "chart-pie",
+    "text-b",
+    "text-italic",
+    "text-underline",
+    "text-strikethrough",
+    "list-bullets",
+    "list-numbers",
+    "quotes",
+    "code",
+    "link",
+    "link-break",
+    "arrow-u-up-left",
+    "arrow-u-up-right"
   ]
 }

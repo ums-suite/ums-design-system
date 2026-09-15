@@ -1,5 +1,5 @@
 @if (label()) {
-  <label class="ums-form-field__label" [for]="controlId()">
+  <label class="ums-form-field__label" [id]="labelId()" [for]="controlId()">
     {{ label() }}
     @if (required()) {
       <span class="ums-form-field__required" aria-hidden="true">*</span>

@@ -1,0 +1,174 @@
+// DSYS-10. `encapsulation: ViewEncapsulation.None` on the component (see its class doc) means
+// every selector below is genuinely global CSS, not view-encapsulated -- each one is hand-scoped
+// under the `.ums-rich-text-editor` prefix so nothing here can leak onto an unrelated element.
+// Token-driven only, same bar as every other component in this package: nothing here is a raw
+// hex/px value, and none of it is Tiptap's own injected default stylesheet (`injectCSS: false`,
+// see the component's class doc) -- the handful of structural ProseMirror rules Tiptap would
+// otherwise inject itself (word-wrap, gap-cursor visibility) are reproduced below, token-driven.
+
+.ums-rich-text-editor {
+  display: block;
+  inline-size: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  transition: border-color var(--motion-fast) var(--ease-standard);
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.ums-rich-text-editor--invalid {
+  border-color: var(--color-danger);
+}
+
+.ums-rich-text-editor--disabled {
+  background-color: var(--color-surface-alt);
+  opacity: 0.7;
+}
+
+.ums-rich-text-editor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border-block-end: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+}
+
+.ums-rich-text-editor__divider {
+  inline-size: 1px;
+  block-size: 20px;
+  margin-inline: var(--space-1);
+  background-color: var(--color-border);
+}
+
+.ums-rich-text-editor__link-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-block-end: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+
+  ums-input {
+    flex: 1;
+    min-inline-size: 0;
+  }
+}
+
+.ums-rich-text-editor__content {
+  padding: var(--space-3);
+
+  // Matches `.ums-rich-text-editor__prosemirror`'s own `min-block-size` (below): Tiptap mounts
+  // asynchronously (afterNextRender -> a dynamic import -> Editor construction, see the
+  // component's class doc), so without this the wrapper renders near-zero-height until that
+  // finishes, then visibly grows the instant it does -- a real layout shift, and (with several
+  // editor instances on one page) the exact kind of shift that made a catalog page's later
+  // sections land at a shifted scroll position mid-screenshot in this package's own e2e suite.
+  min-block-size: calc(10rem + var(--space-3) * 2);
+}
+
+// The actual contenteditable root -- created imperatively by ProseMirror (see the component's
+// class doc for why this can't be a scoped `::ng-deep`-free selector), targeted by the
+// `class: 'ums-rich-text-editor__prosemirror'` this package supplies via `editorProps`.
+// Tiptap/ProseMirror also always adds its own "tiptap"/"ProseMirror" classes alongside it; this
+// package never styles off those, so a future Tiptap version renaming its own internal classes
+// can't silently break this component's appearance.
+.ums-rich-text-editor__prosemirror {
+  min-block-size: 10rem;
+  outline: none;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-font-size);
+  line-height: var(--type-body-line-height);
+  font-weight: var(--type-body-font-weight);
+  color: var(--color-text);
+
+  // Reproduces Tiptap's own (otherwise globally-injected, `injectCSS: false`-disabled) structural
+  // rules -- word-wrap/whitespace handling and gap-cursor caret visibility -- token-driven.
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  .ProseMirror-gapcursor {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    margin: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset-block-start: -2px;
+      inline-size: 20px;
+      border-block-start: 1px solid var(--color-text);
+    }
+  }
+
+  &.ProseMirror-focused .ProseMirror-gapcursor {
+    display: block;
+  }
+
+  p {
+    margin-block: 0 var(--space-3);
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  s {
+    text-decoration: line-through;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  blockquote {
+    margin-block: 0 var(--space-3);
+    margin-inline: 0;
+    padding-inline-start: var(--space-3);
+    border-inline-start: 3px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  code {
+    border-radius: var(--radius-xs);
+    background-color: var(--color-surface-alt);
+    padding-inline: var(--space-1);
+    font-family: monospace;
+    font-size: var(--type-body-sm-font-size);
+  }
+
+  ul,
+  ol {
+    margin-block: 0 var(--space-3);
+    padding-inline-start: var(--space-6);
+  }
+
+  // Placeholder extension's standard empty-state hook (`data-placeholder` attribute + this class
+  // on the first empty node) -- styled with this package's own muted-text token, never a
+  // hardcoded gray from the extension's own (disabled, `injectCSS: false`) default stylesheet.
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: inline-start;
+    block-size: 0;
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+}
