@@ -1,0 +1,80 @@
+<section
+  class="catalog-section"
+  data-testid="rich-text-editor-catalog"
+  aria-labelledby="rich-text-editor-catalog-heading"
+>
+  <h2 id="rich-text-editor-catalog-heading">Rich text editor</h2>
+
+  <h3>Default (Notice authoring)</h3>
+  <div class="catalog-row rte-row" data-testid="rte-default-row">
+    <ums-form-field #noticeField="umsFormField" label="Notice body">
+      <ums-rich-text-editor
+        [id]="noticeField.controlId()"
+        [ariaLabelledBy]="noticeField.labelId()"
+        [ariaDescribedBy]="noticeField.describedBy()"
+        [value]="noticeValue()"
+        (valueChange)="noticeValue.set($event)"
+        placeholder="Write the notice body..."
+        data-testid="rte-default"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Invalid state with inline error</h3>
+  <div class="catalog-row rte-row" data-testid="rte-invalid-row">
+    <ums-form-field
+      #invalidField="umsFormField"
+      label="Announcement body"
+      [required]="true"
+      [errors]="['Announcement body cannot be empty.']"
+    >
+      <ums-rich-text-editor
+        [id]="invalidField.controlId()"
+        [ariaLabelledBy]="invalidField.labelId()"
+        [ariaDescribedBy]="invalidField.describedBy()"
+        [invalid]="invalidField.hasErrors()"
+        [required]="true"
+        [value]="invalidValue()"
+        (valueChange)="invalidValue.set($event)"
+        placeholder="Required..."
+        data-testid="rte-invalid"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Disabled</h3>
+  <div class="catalog-row rte-row" data-testid="rte-disabled-row">
+    <ums-form-field #disabledField="umsFormField" label="Published notice">
+      <ums-rich-text-editor
+        [ariaLabelledBy]="disabledField.labelId()"
+        [disabled]="true"
+        [value]="disabledValue()"
+        data-testid="rte-disabled"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Locale layout check (English vs. long-form Bengali content)</h3>
+  <p>
+    A long-form Bengali notice body renders meaningfully longer/denser than an English one --
+    design-decisions.md "Locale-Safe Component Sizing Verification" -- screenshot-diffed here
+    alongside the English content variant.
+  </p>
+  <div class="catalog-row rte-row" data-testid="rte-locale-row">
+    <ums-form-field #englishField="umsFormField" label="Notice (English)">
+      <ums-rich-text-editor
+        [ariaLabelledBy]="englishField.labelId()"
+        [value]="englishContent"
+        data-testid="rte-content-en"
+      />
+    </ums-form-field>
+    <ums-form-field #bengaliField="umsFormField" label="বিজ্ঞপ্তি (বাংলা)">
+      <ums-rich-text-editor
+        [ariaLabelledBy]="bengaliField.labelId()"
+        [value]="bengaliLongContent()"
+        (valueChange)="bengaliLongContent.set($event)"
+        data-testid="rte-content-bn"
+      />
+    </ums-form-field>
+  </div>
+</section>

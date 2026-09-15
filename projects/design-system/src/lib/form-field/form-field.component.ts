@@ -24,6 +24,13 @@ let nextFormFieldId = 0;
  * `errors` takes already-localized message strings (requirement-spec.md §8: "the design system
  * itself holds no translated strings -- that's each app's i18n resource"); this wrapper only
  * guarantees the *layout/ARIA* of inline validation, never the translation itself.
+ *
+ * `labelId()` (DSYS-10) exists for a projected control that isn't a "labelable" HTML element per
+ * the forms spec (button, input, select, textarea, ...) -- a `<label for>` only computes an
+ * accessible name automatically for those; a `role="textbox"` `<div contenteditable>` (the Rich
+ * Text Editor's real interactive element) needs the label wired explicitly via
+ * `[ariaLabelledBy]="field.labelId()"`, or axe-core's automated a11y gate (requirement-spec.md
+ * §8) correctly flags it as unnamed. Every other DSYS-8 control can ignore `labelId()` entirely.
  */
 @Component({
   selector: 'ums-form-field',
@@ -46,6 +53,8 @@ export class UmsFormFieldComponent {
   readonly controlId = computed(() => `${this.instanceId}-control`);
   readonly hintId = computed(() => `${this.instanceId}-hint`);
   readonly errorId = computed(() => `${this.instanceId}-error`);
+  /** See class doc: for a non-labelable projected control, bind `[ariaLabelledBy]="labelId()"`. */
+  readonly labelId = computed(() => `${this.instanceId}-label`);
   readonly hasErrors = computed(() => this.errors().length > 0);
 
   /** Id the projected control must set as its own `[ariaDescribedBy]`. */

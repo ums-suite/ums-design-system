@@ -1,0 +1,20 @@
+// Page-layout only -- no design-token references here; see
+// pages/button-catalog/button-catalog.component.scss's header comment for the reasoning (this
+// app stands in for a real ums-*-web consuming app, so it is lint-enforced the same way).
+
+.catalog-section {
+  margin-block-end: 2rem;
+}
+
+.catalog-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}
+
+.rte-row > * {
+  inline-size: 100%;
+  max-inline-size: 40rem;
+}

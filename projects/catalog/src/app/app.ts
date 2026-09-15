@@ -11,6 +11,7 @@ import { FormCatalogComponent } from './pages/form-catalog/form-catalog.componen
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
 import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
 import { OverlayCatalogComponent } from './pages/overlay-catalog/overlay-catalog.component';
+import { RichTextEditorCatalogComponent } from './pages/rich-text-editor-catalog/rich-text-editor-catalog.component';
 import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/state-surface-catalog.component';
 
 /**
@@ -28,6 +29,7 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
   imports: [
     ButtonCatalogComponent,
     FormCatalogComponent,
+    RichTextEditorCatalogComponent,
     DataDisplayCatalogComponent,
     DataTableCatalogComponent,
     DateTimeCatalogComponent,

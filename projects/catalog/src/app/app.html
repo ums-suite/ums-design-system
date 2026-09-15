@@ -26,6 +26,17 @@
   <app-overlay-catalog />
   <app-command-palette-catalog />
   <app-charts-catalog />
+  <!--
+    Positioned last among visually-tested sections (after Charts, DSYS-16's own precedent for the
+    same reason -- see that component's own app.ts comment history): every section ABOVE this one
+    already has a pixel-baseline e2e screenshot committed, and Angular's flow layout means new
+    content inserted BEFORE those sections shifts their rendered position by a sub-pixel amount
+    that (as verified while building DSYS-10) is enough to flip a handful of hard-edged/bordered
+    elements' anti-aliasing and fail their unrelated snapshot diffs. Icon/Asset registries below
+    have no such snapshots, so appending here (not among the earlier form primitives, where DSYS-8
+    grouping would otherwise suggest) avoids that churn entirely.
+  -->
+  <app-rich-text-editor-catalog />
   <app-icon-catalog />
   <app-asset-catalog />
 </main>

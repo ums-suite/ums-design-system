@@ -1,0 +1,119 @@
+<div
+  class="ums-rich-text-editor__toolbar"
+  role="toolbar"
+  aria-label="Text formatting"
+  [attr.aria-disabled]="disabled() ? 'true' : null"
+>
+  <ums-icon-button
+    icon="text-b"
+    label="Bold"
+    size="sm"
+    [pressed]="activeState().bold"
+    [disabled]="disabled()"
+    (click)="toggleBold()"
+  />
+  <ums-icon-button
+    icon="text-italic"
+    label="Italic"
+    size="sm"
+    [pressed]="activeState().italic"
+    [disabled]="disabled()"
+    (click)="toggleItalic()"
+  />
+  <ums-icon-button
+    icon="text-underline"
+    label="Underline"
+    size="sm"
+    [pressed]="activeState().underline"
+    [disabled]="disabled()"
+    (click)="toggleUnderline()"
+  />
+  <ums-icon-button
+    icon="text-strikethrough"
+    label="Strikethrough"
+    size="sm"
+    [pressed]="activeState().strike"
+    [disabled]="disabled()"
+    (click)="toggleStrike()"
+  />
+
+  <span class="ums-rich-text-editor__divider" aria-hidden="true"></span>
+
+  <ums-icon-button
+    icon="list-bullets"
+    label="Bulleted list"
+    size="sm"
+    [pressed]="activeState().bulletList"
+    [disabled]="disabled()"
+    (click)="toggleBulletList()"
+  />
+  <ums-icon-button
+    icon="list-numbers"
+    label="Numbered list"
+    size="sm"
+    [pressed]="activeState().orderedList"
+    [disabled]="disabled()"
+    (click)="toggleOrderedList()"
+  />
+  <ums-icon-button
+    icon="quotes"
+    label="Quote"
+    size="sm"
+    [pressed]="activeState().blockquote"
+    [disabled]="disabled()"
+    (click)="toggleBlockquote()"
+  />
+  <ums-icon-button
+    icon="code"
+    label="Code"
+    size="sm"
+    [pressed]="activeState().code"
+    [disabled]="disabled()"
+    (click)="toggleCode()"
+  />
+  <ums-icon-button
+    [icon]="activeState().link ? 'link-break' : 'link'"
+    [label]="activeState().link ? 'Remove link' : 'Insert link'"
+    size="sm"
+    [pressed]="activeState().link"
+    [disabled]="disabled()"
+    (click)="onLinkButtonClick()"
+  />
+
+  <span class="ums-rich-text-editor__divider" aria-hidden="true"></span>
+
+  <ums-icon-button
+    icon="arrow-u-up-left"
+    label="Undo"
+    size="sm"
+    [disabled]="disabled() || !canUndo()"
+    (click)="undo()"
+  />
+  <ums-icon-button
+    icon="arrow-u-up-right"
+    label="Redo"
+    size="sm"
+    [disabled]="disabled() || !canRedo()"
+    (click)="redo()"
+  />
+</div>
+
+@if (linkInputOpen()) {
+  <div class="ums-rich-text-editor__link-row">
+    <label class="ums-visually-hidden" [for]="linkInputId">Link URL</label>
+    <ums-input
+      #linkUrlInput
+      [id]="linkInputId"
+      placeholder="https://example.com"
+      [value]="linkUrlDraft()"
+      (valueChange)="linkUrlDraft.set($event)"
+      (keydown.enter)="confirmLink()"
+      (keydown.escape)="cancelLink()"
+      data-testid="rte-link-url-input"
+    />
+    <ums-button size="sm" variant="secondary" (click)="confirmLink()">Apply</ums-button>
+    <ums-button size="sm" variant="ghost" (click)="cancelLink()">Cancel</ums-button>
+  </div>
+}
+
+<div #editorRoot class="ums-rich-text-editor__content"></div>

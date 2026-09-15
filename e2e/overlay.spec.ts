@@ -128,7 +128,9 @@ test.describe('Overlay catalog page', () => {
 
     await page.getByTestId('toast-action-trigger').click();
     await expect(toastRegion).toContainText('Application submitted.');
-    await page.getByRole('button', { name: 'Undo' }).click();
+    // Scoped to the toast region: the page also has other "Undo" buttons elsewhere (e.g. the
+    // Rich Text Editor toolbar's own Undo control, DSYS-10) once more catalog sections exist.
+    await toastRegion.getByRole('button', { name: 'Undo' }).click();
     await expect(toastRegion).toContainText('Submission undone.');
   });
 

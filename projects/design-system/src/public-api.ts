@@ -36,6 +36,8 @@ export * from './lib/select/select.types';
 export * from './lib/select/select.component';
 export * from './lib/combobox/combobox.types';
 export * from './lib/combobox/combobox.component';
+export * from './lib/rich-text-editor/rich-text-editor.types';
+export * from './lib/rich-text-editor/rich-text-editor.component';
 
 // Data display primitives (DSYS-11)
 export * from './lib/card/card.types';
