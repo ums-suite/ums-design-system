@@ -10,6 +10,13 @@ import { expect, test, type Page } from '@playwright/test';
  * why `*.component.spec.ts` (Karma) deliberately does not attempt to assert on real chart
  * rendering (see `line-chart.component.spec.ts`'s header comment) and this real-Chromium suite
  * is the one place that behavior is actually exercised.
+ *
+ * Every `toBeVisible`/`toHaveScreenshot` call below carries an explicit generous timeout for the
+ * same reason: under a fully-parallel local run (`npm run e2e` with no `--workers` cap), several
+ * workers cold-compiling this page's large lazy `echarts-setup` chunk through the dev server's
+ * own on-demand bundler at once can genuinely take longer than Playwright's 5s default --
+ * independent of anything about the chart components themselves. CI pins `workers: 1`
+ * (`playwright.config.ts`), where this contention doesn't occur.
  */
 
 const SETTLE_MS = 600;
@@ -67,8 +74,23 @@ test.describe('Data Visualization catalog page', () => {
     );
   });
 
+  test('renders the English and a long-form Bengali Progress bar label without clipping', async ({
+    page,
+  }) => {
+    // design-decisions.md "Locale-Safe Component Sizing Verification" -- every text-bearing
+    // catalog entry gets an English-vs-long-form-Bengali screenshot, matching every other
+    // DSYS-18 catalog page (form/data-table/navigation/command-palette/overlay). The Progress
+    // bar's `label` is this chart family's one arbitrary, consumer-supplied translatable string.
+    await expect(page.getByTestId('progress-bar-locale-row')).toHaveScreenshot(
+      'progress-bar-locale-en-vs-bn.png',
+      { timeout: 15_000 },
+    );
+  });
+
   test('renders a stable light-theme visual baseline', async ({ page }) => {
-    await expect(page.getByTestId('charts-catalog')).toHaveScreenshot('charts-catalog-light.png');
+    await expect(page.getByTestId('charts-catalog')).toHaveScreenshot('charts-catalog-light.png', {
+      timeout: 15_000,
+    });
   });
 
   test('renders a stable dark-theme visual baseline after a live theme toggle', async ({
@@ -76,7 +98,9 @@ test.describe('Data Visualization catalog page', () => {
   }) => {
     await page.getByTestId('theme-toggle-dark').click();
     await settle(page);
-    await expect(page.getByTestId('charts-catalog')).toHaveScreenshot('charts-catalog-dark.png');
+    await expect(page.getByTestId('charts-catalog')).toHaveScreenshot('charts-catalog-dark.png', {
+      timeout: 15_000,
+    });
   });
 
   test('a mid-animation dataset update converges to the same final render as a single update (interrupt-and-retarget)', async ({
@@ -90,7 +114,7 @@ test.describe('Data Visualization catalog page', () => {
     const chart = page.getByTestId('live-update-chart');
     await page.getByTestId('live-update-once').click();
     await settle(page);
-    await expect(chart).toHaveScreenshot('live-update-settled.png');
+    await expect(chart).toHaveScreenshot('live-update-settled.png', { timeout: 15_000 });
 
     // A fresh load, then "update rapidly": a decoy dataset is applied, and the *same* final
     // target is applied again less than one animation frame later, interrupting the decoy's
@@ -102,7 +126,7 @@ test.describe('Data Visualization catalog page', () => {
     await settle(page);
     await page.getByTestId('live-update-rapidly').click();
     await settle(page);
-    await expect(chart).toHaveScreenshot('live-update-settled.png');
+    await expect(chart).toHaveScreenshot('live-update-settled.png', { timeout: 15_000 });
   });
 
   test('a chart inside an open Modal repaints live when the theme is toggled, without the modal closing', async ({
@@ -141,7 +165,7 @@ test.describe('Data Visualization catalog page', () => {
     // The chart actually repainted (not a cached light-mode canvas sitting inside a
     // now-dark-themed modal chrome).
     expect(beforeToggle.equals(afterToggle)).toBe(false);
-    await expect(modal).toHaveScreenshot('chart-modal-dark-live-toggle.png');
+    await expect(modal).toHaveScreenshot('chart-modal-dark-live-toggle.png', { timeout: 15_000 });
 
     expect(pageErrors).toEqual([]);
   });

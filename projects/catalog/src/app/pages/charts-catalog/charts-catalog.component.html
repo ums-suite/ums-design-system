@@ -61,6 +61,26 @@
     </div>
   </div>
 
+  <h3>Progress bar label -- English vs. long-form Bengali</h3>
+  <div class="catalog-row" data-testid="progress-bar-locale-row">
+    <div class="progress-bar-cell">
+      <ums-progress-bar
+        data-testid="progress-bar-en"
+        [value]="42"
+        tone="info"
+        label="42 / 100 seats filled"
+      />
+    </div>
+    <div class="progress-bar-cell">
+      <ums-progress-bar
+        data-testid="progress-bar-bn"
+        [value]="42"
+        tone="info"
+        label="১০০টি আসনের মধ্যে ৪২টি পূর্ণ হয়েছে"
+      />
+    </div>
+  </div>
+
   <h3>Heatmap calendar</h3>
   <div class="catalog-row chart-row" data-testid="heatmap-calendar-row">
     <ums-heatmap-calendar
