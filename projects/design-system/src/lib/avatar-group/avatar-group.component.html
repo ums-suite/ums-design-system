@@ -1,0 +1,17 @@
+@for (member of visibleMembers(); track member.name) {
+  <ums-avatar
+    class="ums-avatar-group__item"
+    [name]="member.name"
+    [imageUrl]="member.imageUrl"
+    [size]="size()"
+  />
+}
+@if (overflowCount() > 0) {
+  <span
+    class="ums-avatar-group__item ums-avatar-group__overflow"
+    role="img"
+    [attr.aria-label]="overflowCount() + ' more: ' + overflowLabel()"
+  >
+    +{{ overflowCount() }}
+  </span>
+}

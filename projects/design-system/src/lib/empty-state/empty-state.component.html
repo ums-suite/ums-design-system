@@ -1,0 +1,8 @@
+<ums-asset class="ums-empty-state__illustration" [name]="illustration()" width="160" decorative />
+<h3 class="ums-empty-state__title">{{ title() }}</h3>
+@if (description()) {
+  <p class="ums-empty-state__description">{{ description() }}</p>
+}
+<div class="ums-empty-state__actions">
+  <ng-content />
+</div>

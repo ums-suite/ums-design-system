@@ -1,0 +1,58 @@
+<section
+  class="catalog-section"
+  data-testid="state-surface-catalog"
+  aria-labelledby="state-surface-catalog-heading"
+>
+  <h2 id="state-surface-catalog-heading">State surfaces</h2>
+
+  <h3>Skeleton loaders</h3>
+  <div
+    class="catalog-row"
+    data-testid="skeleton-row"
+    role="status"
+    aria-busy="true"
+    aria-label="Loading"
+  >
+    <ums-skeleton variant="circle" width="48px" height="48px" data-testid="skeleton-circle" />
+    <ums-skeleton variant="rect" width="120px" height="80px" data-testid="skeleton-rect" />
+    <ums-skeleton variant="text" [lines]="3" width="240px" data-testid="skeleton-text" />
+  </div>
+
+  <h3>Empty state</h3>
+  <div class="catalog-row" data-testid="empty-state-row">
+    <ums-empty-state
+      title="No applications yet"
+      description="New applications will appear here as soon as they are submitted."
+    >
+      <button type="button">Invite applicants</button>
+    </ums-empty-state>
+  </div>
+
+  <h3>Error / failure state</h3>
+  <div class="catalog-row" data-testid="error-state-row">
+    <ums-error-state
+      title="Couldn't load the results"
+      description="Something went wrong while fetching this page. Retry count: {{ retryCount() }}"
+      (retry)="onRetry()"
+      data-testid="error-state"
+    />
+  </div>
+
+  <h3>Offline / connectivity banner</h3>
+  <p>
+    Toggled programmatically via the window "online"/"offline" events (see the Playwright e2e suite,
+    which uses <code>context.setOffline()</code>).
+  </p>
+  <div class="catalog-row" data-testid="offline-banner-row">
+    <ums-offline-banner data-testid="offline-banner" />
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    A long-form Bengali title renders meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification".
+  </p>
+  <div class="catalog-row" data-testid="state-surface-locale-row">
+    <ums-empty-state [title]="bengaliEmptyTitle" data-testid="empty-state-bn" />
+  </div>
+</section>

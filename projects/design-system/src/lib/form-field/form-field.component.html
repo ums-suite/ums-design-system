@@ -1,0 +1,22 @@
+@if (label()) {
+  <label class="ums-form-field__label" [for]="controlId()">
+    {{ label() }}
+    @if (required()) {
+      <span class="ums-form-field__required" aria-hidden="true">*</span>
+    }
+  </label>
+}
+<div class="ums-form-field__control">
+  <ng-content />
+</div>
+@if (hasErrors()) {
+  <div role="alert">
+    <ul class="ums-form-field__errors" [id]="errorId()">
+      @for (error of errors(); track error) {
+        <li>{{ error }}</li>
+      }
+    </ul>
+  </div>
+} @else if (hint()) {
+  <p class="ums-form-field__hint" [id]="hintId()">{{ hint() }}</p>
+}

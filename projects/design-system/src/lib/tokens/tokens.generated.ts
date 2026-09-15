@@ -39,6 +39,9 @@ export const Tokens = {
     onPrimary: "var(--color-on-primary)",
     onSecondary: "var(--color-on-secondary)",
     onDanger: "var(--color-on-danger)",
+    onSuccess: "var(--color-on-success)",
+    onWarning: "var(--color-on-warning)",
+    onInfo: "var(--color-on-info)",
   },
   shadow: {
     "0": "var(--shadow-0)",
@@ -181,6 +184,9 @@ export const ALL_DESIGN_TOKEN_CSS_VARS = [
   "--color-on-primary",
   "--color-on-secondary",
   "--color-on-danger",
+  "--color-on-success",
+  "--color-on-warning",
+  "--color-on-info",
   "--shadow-0",
   "--shadow-1",
   "--shadow-2",
@@ -332,6 +338,18 @@ export const ColorTokenValues = {
     dark: "#101828",
   },
   onDanger: {
+    light: "#FFFFFF",
+    dark: "#101828",
+  },
+  onSuccess: {
+    light: "#FFFFFF",
+    dark: "#101828",
+  },
+  onWarning: {
+    light: "#101828",
+    dark: "#101828",
+  },
+  onInfo: {
     light: "#FFFFFF",
     dark: "#101828",
   },

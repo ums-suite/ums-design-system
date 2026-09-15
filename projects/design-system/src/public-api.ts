@@ -26,3 +26,85 @@ export * from './lib/button/button.component';
 export * from './lib/icon-button/icon-button.component';
 export * from './lib/fab/fab.component';
 export * from './lib/split-button/split-button.component';
+
+// Form primitives (DSYS-8)
+export * from './lib/form-field/form-field.component';
+export * from './lib/input/input.types';
+export * from './lib/input/input.component';
+export * from './lib/textarea/textarea.component';
+export * from './lib/select/select.types';
+export * from './lib/select/select.component';
+export * from './lib/combobox/combobox.types';
+export * from './lib/combobox/combobox.component';
+
+// Data display primitives (DSYS-11)
+export * from './lib/card/card.types';
+export * from './lib/card/card.component';
+export * from './lib/badge/badge.types';
+export * from './lib/badge/badge.component';
+export * from './lib/avatar/avatar.types';
+export * from './lib/avatar/avatar.component';
+export * from './lib/avatar-group/avatar-group.types';
+export * from './lib/avatar-group/avatar-group.component';
+export * from './lib/breadcrumbs/breadcrumbs.types';
+export * from './lib/breadcrumbs/breadcrumbs.component';
+export * from './lib/timeline/timeline.types';
+export * from './lib/timeline/timeline.component';
+
+// Data Table (DSYS-12)
+export * from './lib/data-table/data-table.types';
+export * from './lib/data-table/data-table.component';
+
+// State surfaces (DSYS-17)
+export * from './lib/skeleton/skeleton.types';
+export * from './lib/skeleton/skeleton.component';
+export * from './lib/empty-state/empty-state.component';
+export * from './lib/error-state/error-state.component';
+export * from './lib/offline-banner/offline-banner.component';
+
+// Navigation (DSYS-13)
+export * from './lib/app-shell/app-shell.types';
+export * from './lib/app-shell/app-shell.component';
+export * from './lib/tab-bar/tab-bar.types';
+export * from './lib/tab-bar/tab-bar.component';
+export * from './lib/stepper/stepper.types';
+export * from './lib/stepper/stepper.component';
+
+// Date/Time pickers, OTP input, File upload (DSYS-9)
+export * from './lib/date-picker/calendar.util';
+export * from './lib/date-picker/date-picker.component';
+export * from './lib/date-range-picker/date-range-picker.types';
+export * from './lib/date-range-picker/date-range-picker.component';
+export * from './lib/time-picker/time-picker.component';
+export * from './lib/otp-input/otp-input.component';
+export * from './lib/file-upload/file-upload.types';
+export * from './lib/file-upload/file-upload.component';
+
+// Data Visualization (DSYS-16)
+export * from './lib/charts/chart.types';
+export * from './lib/charts/line-chart/line-chart.component';
+export * from './lib/charts/bar-chart/bar-chart.component';
+export * from './lib/charts/area-chart/area-chart.component';
+export * from './lib/charts/sparkline/sparkline.component';
+export * from './lib/charts/donut-chart/donut-chart.component';
+export * from './lib/charts/progress-ring/progress-ring.component';
+export * from './lib/charts/progress-bar/progress-bar.component';
+export * from './lib/charts/heatmap-calendar/heatmap-calendar.component';
+
+// Command Palette (DSYS-14)
+export * from './lib/command-palette/command-palette.types';
+export * from './lib/command-palette/command-palette.component';
+
+// Feedback & overlays (DSYS-15)
+export * from './lib/overlay/focus-trap.util';
+export * from './lib/modal/modal.types';
+export * from './lib/modal/modal.component';
+export * from './lib/drawer/drawer.types';
+export * from './lib/drawer/drawer.component';
+export * from './lib/toast/toast.types';
+export * from './lib/toast/toast.service';
+export * from './lib/toast/toast-container.component';
+export * from './lib/tooltip/tooltip.types';
+export * from './lib/tooltip/tooltip.directive';
+export * from './lib/popover/popover.component';
+export * from './lib/confirmation-dialog/confirmation-dialog.component';

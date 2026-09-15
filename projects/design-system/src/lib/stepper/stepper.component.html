@@ -1,0 +1,30 @@
+<ol class="ums-stepper__list" aria-label="Progress">
+  @for (step of steps(); track step.label; let i = $index) {
+    <li class="ums-stepper__step" [attr.data-status]="statusOf(i)">
+      <span class="ums-stepper__connector"></span>
+      @if (statusOf(i) === 'complete') {
+        <button
+          type="button"
+          class="ums-stepper__marker"
+          (click)="stepClick.emit(i)"
+          [attr.aria-label]="'Go back to ' + step.label + ' (completed)'"
+        >
+          <ums-icon name="check" [size]="14" decorative />
+        </button>
+      } @else {
+        <span
+          class="ums-stepper__marker"
+          [attr.aria-current]="statusOf(i) === 'current' ? 'step' : null"
+        >
+          {{ i + 1 }}
+        </span>
+      }
+      <span class="ums-stepper__text">
+        <span class="ums-stepper__label">{{ step.label }}</span>
+        @if (step.description) {
+          <span class="ums-stepper__description">{{ step.description }}</span>
+        }
+      </span>
+    </li>
+  }
+</ol>

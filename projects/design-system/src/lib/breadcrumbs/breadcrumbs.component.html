@@ -1,0 +1,20 @@
+<nav aria-label="Breadcrumb">
+  <ol class="ums-breadcrumbs__list">
+    @for (item of items(); track item.label; let i = $index) {
+      <li class="ums-breadcrumbs__item">
+        @if (i === lastIndex()) {
+          <span class="ums-breadcrumbs__current" aria-current="page">{{ item.label }}</span>
+        } @else {
+          <a
+            class="ums-breadcrumbs__link"
+            [href]="item.href ?? '#'"
+            (click)="onItemClick($event, item)"
+          >
+            {{ item.label }}
+          </a>
+          <ums-icon class="ums-breadcrumbs__separator" name="caret-right" [size]="14" decorative />
+        }
+      </li>
+    }
+  </ol>
+</nav>

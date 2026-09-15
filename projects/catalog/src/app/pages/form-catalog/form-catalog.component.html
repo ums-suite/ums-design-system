@@ -1,0 +1,141 @@
+<section class="catalog-section" data-testid="form-catalog" aria-labelledby="form-catalog-heading">
+  <h2 id="form-catalog-heading">Form primitives</h2>
+
+  <h3>Text / number / password / search input</h3>
+  <div class="catalog-row" data-testid="input-row">
+    <ums-form-field #textField="umsFormField" label="Full name">
+      <ums-input
+        [id]="textField.controlId()"
+        [ariaDescribedBy]="textField.describedBy()"
+        [value]="textValue()"
+        (valueChange)="textValue.set($event)"
+        data-testid="input-text"
+      />
+    </ums-form-field>
+
+    <ums-form-field #numberField="umsFormField" label="Credit hours">
+      <ums-input
+        type="number"
+        [id]="numberField.controlId()"
+        [ariaDescribedBy]="numberField.describedBy()"
+        [value]="numberValue()"
+        (valueChange)="numberValue.set($event)"
+        data-testid="input-number"
+      />
+    </ums-form-field>
+
+    <ums-form-field #passwordField="umsFormField" label="Password">
+      <ums-input
+        type="password"
+        [id]="passwordField.controlId()"
+        [ariaDescribedBy]="passwordField.describedBy()"
+        [value]="passwordValue()"
+        (valueChange)="passwordValue.set($event)"
+        data-testid="input-password"
+      />
+    </ums-form-field>
+
+    <ums-form-field #searchField="umsFormField" label="Search">
+      <ums-input
+        type="search"
+        [clearable]="true"
+        [id]="searchField.controlId()"
+        [ariaDescribedBy]="searchField.describedBy()"
+        [value]="searchValue()"
+        (valueChange)="searchValue.set($event)"
+        data-testid="input-search"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Invalid state with inline error</h3>
+  <div class="catalog-row" data-testid="input-invalid-row">
+    <ums-form-field
+      #emailField="umsFormField"
+      label="Email address"
+      [required]="true"
+      [errors]="['Must be a valid email address.']"
+    >
+      <ums-input
+        [id]="emailField.controlId()"
+        [ariaDescribedBy]="emailField.describedBy()"
+        [invalid]="emailField.hasErrors()"
+        [value]="invalidEmailValue()"
+        (valueChange)="invalidEmailValue.set($event)"
+        data-testid="input-invalid"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Textarea</h3>
+  <div class="catalog-row" data-testid="textarea-row">
+    <ums-form-field
+      #bioField="umsFormField"
+      label="Short bio"
+      hint="Shown on the public alumni directory."
+    >
+      <ums-textarea
+        [id]="bioField.controlId()"
+        [ariaDescribedBy]="bioField.describedBy()"
+        [maxLength]="280"
+        [value]="bioValue()"
+        (valueChange)="bioValue.set($event)"
+        data-testid="textarea-bio"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Select</h3>
+  <div class="catalog-row" data-testid="select-row">
+    <ums-form-field #deptField="umsFormField" label="Department">
+      <ums-select
+        [id]="deptField.controlId()"
+        [ariaDescribedBy]="deptField.describedBy()"
+        [options]="departments"
+        placeholder="Choose a department"
+        [value]="departmentValue()"
+        (valueChange)="departmentValue.set($event)"
+        data-testid="select-department"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Combobox</h3>
+  <div class="catalog-row" data-testid="combobox-row">
+    <ums-form-field #cityField="umsFormField" label="Home district">
+      <ums-combobox
+        [id]="cityField.controlId()"
+        [ariaDescribedBy]="cityField.describedBy()"
+        [options]="cities"
+        placeholder="Type to search..."
+        [value]="cityValue()"
+        (valueChange)="cityValue.set($event)"
+        data-testid="combobox-city"
+      />
+    </ums-form-field>
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali error message)</h3>
+  <p>
+    A long-form Bengali validation message renders meaningfully longer than an English one --
+    design-decisions.md "Locale-Safe Component Sizing Verification" -- screenshot-diffed here
+    alongside the English error variant above.
+  </p>
+  <div class="catalog-row" data-testid="form-locale-row">
+    <ums-form-field
+      #bengaliField="umsFormField"
+      label="শিক্ষার্থী আইডি"
+      [errors]="[bengaliLongError]"
+      data-testid="form-field-bn"
+    >
+      <ums-input
+        [id]="bengaliField.controlId()"
+        [ariaDescribedBy]="bengaliField.describedBy()"
+        [invalid]="true"
+        [value]="bengaliValue()"
+        (valueChange)="bengaliValue.set($event)"
+        data-testid="input-label-bn"
+      />
+    </ums-form-field>
+  </div>
+</section>

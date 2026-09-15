@@ -1,0 +1,142 @@
+@if (hasFilterableColumn()) {
+  <div class="ums-data-table__toolbar">
+    <ums-icon-button
+      icon="funnel"
+      [label]="filtersOpen() ? 'Hide column filters' : 'Show column filters'"
+      [attr.aria-pressed]="filtersOpen()"
+      (click)="toggleFiltersOpen()"
+    />
+  </div>
+}
+
+<div class="ums-data-table__scroll" role="table" [attr.aria-label]="caption() ?? null">
+  <div
+    class="ums-data-table__header"
+    role="rowgroup"
+    [style.grid-template-columns]="gridTemplateColumns()"
+  >
+    <div class="ums-data-table__row ums-data-table__row--header" role="row">
+      @if (selectionMode() === 'multiple') {
+        <div class="ums-data-table__cell ums-data-table__cell--selection" role="columnheader">
+          <input
+            type="checkbox"
+            aria-label="Select all rows"
+            [checked]="allSelected()"
+            [indeterminate]="someSelected()"
+            (change)="toggleSelectAll()"
+          />
+        </div>
+      } @else if (selectionMode() === 'single') {
+        <div class="ums-data-table__cell ums-data-table__cell--selection" role="columnheader"></div>
+      }
+      @for (column of columns(); track column.id) {
+        <div
+          class="ums-data-table__cell ums-data-table__cell--header"
+          role="columnheader"
+          [attr.aria-sort]="ariaSortFor(column)"
+          [class.ums-data-table__cell--pinned]="!!column.pinned"
+          [style.position]="column.pinned ? 'sticky' : null"
+          [style.inset-inline-start.px]="column.pinned === 'start' ? pinOffset(column) : null"
+          [style.inset-inline-end.px]="column.pinned === 'end' ? pinOffset(column) : null"
+        >
+          @if (column.sortable) {
+            <button type="button" class="ums-data-table__sort-button" (click)="toggleSort(column)">
+              <span>{{ column.header }}</span>
+              @if (ariaSortFor(column) !== 'none') {
+                <ums-icon
+                  [name]="ariaSortFor(column) === 'ascending' ? 'caret-up' : 'caret-down'"
+                  decorative
+                />
+              }
+            </button>
+          } @else {
+            <span>{{ column.header }}</span>
+          }
+          <span
+            class="ums-data-table__resize-handle"
+            (pointerdown)="onResizePointerDown($event, column)"
+          ></span>
+        </div>
+      }
+    </div>
+    @if (filtersOpen() && hasFilterableColumn()) {
+      <div class="ums-data-table__row ums-data-table__row--filters" role="row">
+        @if (selectionMode() !== 'none') {
+          <div class="ums-data-table__cell ums-data-table__cell--selection" role="cell"></div>
+        }
+        @for (column of columns(); track column.id) {
+          <div class="ums-data-table__cell" role="cell">
+            @if (column.filterable) {
+              <input
+                type="text"
+                class="ums-data-table__filter-input"
+                [attr.aria-label]="'Filter ' + column.header"
+                [placeholder]="'Filter ' + column.header"
+                (input)="onFilterInput(column.id, $any($event.target).value)"
+              />
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (sortedRows().length === 0) {
+    <div class="ums-data-table__body-empty" role="rowgroup">
+      <div class="ums-data-table__row ums-data-table__row--empty" role="row">
+        <div class="ums-data-table__cell ums-data-table__cell--empty" role="cell">
+          <ums-empty-state [title]="emptyMessage()" data-testid="data-table-empty" />
+        </div>
+      </div>
+    </div>
+  } @else {
+    <cdk-virtual-scroll-viewport
+      class="ums-data-table__viewport"
+      [itemSize]="itemSizePx()"
+      [style.block-size]="viewportHeight()"
+    >
+      <div
+        class="ums-data-table__row"
+        role="row"
+        *cdkVirtualFor="let row of sortedRows(); let i = index; trackBy: trackByRow"
+        [style.grid-template-columns]="gridTemplateColumns()"
+        [attr.aria-label]="rowLabel(row, i)"
+        [class.ums-data-table__row--selected]="isSelected(row)"
+      >
+        @if (selectionMode() === 'multiple') {
+          <div class="ums-data-table__cell ums-data-table__cell--selection" role="cell">
+            <input
+              type="checkbox"
+              [attr.aria-label]="'Select ' + rowLabel(row, i)"
+              [checked]="isSelected(row)"
+              (change)="toggleRowSelection(row)"
+            />
+          </div>
+        } @else if (selectionMode() === 'single') {
+          <div class="ums-data-table__cell ums-data-table__cell--selection" role="cell">
+            <input
+              type="radio"
+              name="ums-data-table-selection"
+              [attr.aria-label]="'Select ' + rowLabel(row, i)"
+              [checked]="isSelected(row)"
+              (change)="toggleRowSelection(row)"
+            />
+          </div>
+        }
+        @for (column of columns(); track column.id) {
+          <div
+            class="ums-data-table__cell"
+            [class.ums-tnum]="column.numeric"
+            role="cell"
+            [class.ums-data-table__cell--pinned]="!!column.pinned"
+            [style.position]="column.pinned ? 'sticky' : null"
+            [style.inset-inline-start.px]="column.pinned === 'start' ? pinOffset(column) : null"
+            [style.inset-inline-end.px]="column.pinned === 'end' ? pinOffset(column) : null"
+          >
+            {{ cellText(column, row) }}
+          </div>
+        }
+      </div>
+    </cdk-virtual-scroll-viewport>
+  }
+</div>

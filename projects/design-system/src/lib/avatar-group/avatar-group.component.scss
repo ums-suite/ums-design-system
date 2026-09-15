@@ -1,0 +1,43 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ums-avatar-group__item {
+  border: 2px solid var(--color-surface);
+  margin-inline-start: -10px;
+
+  &:first-child {
+    margin-inline-start: 0;
+  }
+}
+
+.ums-avatar-group__overflow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-feature-settings: var(--font-feature-numeric);
+}
+
+:host([data-size='sm']) .ums-avatar-group__overflow {
+  inline-size: 24px;
+  block-size: 24px;
+  font-size: var(--type-label-font-size);
+}
+
+:host([data-size='md']) .ums-avatar-group__overflow {
+  inline-size: 40px;
+  block-size: 40px;
+  font-size: var(--type-body-sm-font-size);
+}
+
+:host([data-size='lg']) .ums-avatar-group__overflow {
+  inline-size: 64px;
+  block-size: 64px;
+  font-size: var(--type-heading-4-font-size);
+}

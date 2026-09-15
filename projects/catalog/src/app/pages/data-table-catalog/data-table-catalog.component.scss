@@ -1,0 +1,13 @@
+// Page-layout only -- no design-token references here; see
+// button-catalog.component.scss's header comment for the reasoning.
+
+.catalog-section {
+  margin-block-end: 2rem;
+}
+
+// Deliberately narrower than the table's own column widths (44 + 160 + 220 + 100 = 524px) so the
+// pinned "Program" column has real horizontal scroll distance to prove it stays fixed against --
+// requirement-spec.md §6 "column resize/pin".
+.data-table-catalog__narrow-viewport {
+  max-inline-size: 420px;
+}

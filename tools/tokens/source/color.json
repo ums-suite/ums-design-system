@@ -141,6 +141,24 @@
       "dark": "{primitive.color.neutral-800}",
       "type": "color",
       "comment": "COMPONENT-LAYER ADDITION: text/icon color on a --color-danger fill. Light theme's danger red is deep enough for white text; dark theme's is a lighter coral that needs dark text to stay AA -- same reasoning as on-primary."
+    },
+    "on-success": {
+      "value": "{primitive.color.neutral-0}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION (DSYS-11): text/icon color on a --color-success fill (Badge/Status Chip). Same light/dark flip reasoning as on-primary/on-danger -- the dark theme's success green is meaningfully brighter than the light theme's, so dark text keeps AA there while white text stays correct against the light theme's deep green."
+    },
+    "on-warning": {
+      "value": "{primitive.color.neutral-800}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION (DSYS-11): text/icon color on a --color-warning fill (Badge/Status Chip). Same reasoning as on-secondary -- both theme's amber values are light/medium enough that only dark text passes AA."
+    },
+    "on-info": {
+      "value": "{primitive.color.neutral-0}",
+      "dark": "{primitive.color.neutral-800}",
+      "type": "color",
+      "comment": "COMPONENT-LAYER ADDITION (DSYS-11): text/icon color on a --color-info fill (Badge/Status Chip). Same light/dark flip reasoning as on-primary -- the dark theme's info cyan is meaningfully brighter than the light theme's."
     }
   }
 }

@@ -1,0 +1,47 @@
+// DSYS-16 shared host styles for every chart component in this family (Line/Bar/Donut/Area,
+// Sparkline, Progress ring/bar, Heatmap calendar). ECharts paints into a plain <div> canvas
+// container -- everything ECharts itself draws is JS-computed via `chart-theme.util.ts`'s live
+// palette resolution (see `base-chart.ts`), never a raw hex in this file. The two overlay label
+// classes below are real DOM text laid over the canvas (progress ring's live percentage), kept
+// out of ECharts' own (unregistered) Graphic/Title components deliberately -- see
+// `progress.util.ts`.
+
+:host {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+}
+
+.ums-chart__canvas {
+  inline-size: 100%;
+}
+
+.ums-chart__center-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-size: var(--type-heading-3-font-size);
+  font-weight: var(--type-heading-3-font-weight);
+  color: var(--color-text);
+  font-feature-settings: 'tnum';
+  pointer-events: none;
+}
+
+.ums-chart__track-label {
+  display: block;
+  margin-block-start: var(--space-2);
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-text-muted);
+  font-feature-settings: 'tnum';
+}
+
+// Sparkline is chrome-free by design (line-like-chart.util.ts's `minimal` mode) -- it's meant to
+// sit inline in a KPI tile/table cell, not claim a full block-level row's worth of surrounding
+// whitespace the way a full chart does.
+:host(.ums-chart--sparkline) {
+  display: inline-block;
+  inline-size: 100%;
+}

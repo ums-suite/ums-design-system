@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  margin-block-end: var(--space-4);
+}
+
+.ums-form-field__label {
+  display: block;
+  margin-block-end: var(--space-1);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.ums-form-field__required {
+  color: var(--color-danger);
+  margin-inline-start: var(--space-1);
+}
+
+.ums-form-field__control {
+  display: block;
+}
+
+.ums-form-field__hint {
+  margin-block: var(--space-1) 0;
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-text-muted);
+}
+
+.ums-form-field__errors {
+  margin-block: var(--space-1) 0;
+  padding-inline-start: var(--space-4);
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-danger);
+  list-style: disc;
+}

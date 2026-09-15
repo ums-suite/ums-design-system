@@ -1,0 +1,93 @@
+:host {
+  display: block;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-5);
+}
+
+// variant="content"
+.ums-card__header {
+  margin-block-end: var(--space-3);
+}
+
+.ums-card__title {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--type-heading-3-font-size);
+  font-weight: var(--type-heading-3-font-weight);
+  color: var(--color-text);
+}
+
+.ums-card__subtitle {
+  margin-block-start: var(--space-1);
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-text-muted);
+}
+
+// variant="stat"
+:host([data-variant='stat']) {
+  padding: var(--space-4);
+}
+
+.ums-card__stat-label {
+  margin: 0;
+  font-size: var(--type-label-font-size);
+  font-weight: var(--type-label-font-weight);
+  letter-spacing: var(--type-label-letter-spacing);
+  text-transform: var(--type-label-text-transform);
+  color: var(--color-text-muted);
+}
+
+.ums-card__stat-value {
+  margin-block: var(--space-1) 0;
+  font-family: var(--font-family-display);
+  font-size: var(--type-heading-1-font-size);
+  font-weight: var(--type-heading-1-font-weight);
+  font-feature-settings: var(--font-feature-numeric);
+  color: var(--color-text);
+}
+
+.ums-card__stat-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-block-start: var(--space-1);
+  font-size: var(--type-body-sm-font-size);
+  font-feature-settings: var(--font-feature-numeric);
+  color: var(--color-text-muted);
+
+  &[data-trend='up'] {
+    color: var(--color-success);
+  }
+
+  &[data-trend='down'] {
+    color: var(--color-danger);
+  }
+}
+
+// variant="profile"
+:host([data-variant='profile']) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ums-card__profile-avatar {
+  margin-block-end: var(--space-3);
+}
+
+.ums-card__profile-name {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--type-heading-4-font-size);
+  font-weight: var(--type-heading-4-font-weight);
+  color: var(--color-text);
+}
+
+.ums-card__profile-role {
+  margin-block-start: var(--space-1);
+  font-size: var(--type-body-sm-font-size);
+  color: var(--color-text-muted);
+}

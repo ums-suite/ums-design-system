@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  inline-size: 100%;
+}
+
+.ums-select__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ums-select__native {
+  appearance: none;
+  inline-size: 100%;
+  block-size: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-font-size);
+  padding-inline: var(--space-3) var(--space-7);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-focus);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-surface-alt);
+    opacity: 0.7;
+  }
+}
+
+:host(.ums-select--invalid) .ums-select__native {
+  border-color: var(--color-danger);
+}
+
+.ums-select__chevron {
+  position: absolute;
+  inset-inline-end: var(--space-3);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}

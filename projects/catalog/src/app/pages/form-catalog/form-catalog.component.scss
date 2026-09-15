@@ -1,0 +1,18 @@
+// Page-layout only -- no design-token references here (see button-catalog.component.scss's
+// header comment: the catalog app stands in for a real ums-*-web consuming app and is
+// lint-enforced against raw var(--token) usage the same way). All visible color/spacing/
+// typography comes from the ums-form-field/ums-input/ums-select/ums-combobox/ums-textarea
+// components themselves, never from this file.
+
+.catalog-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-block-end: 1rem;
+
+  > * {
+    min-inline-size: 220px;
+    max-inline-size: 320px;
+  }
+}

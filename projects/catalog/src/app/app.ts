@@ -1,8 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ThemeService, type ThemeMode } from '@ums/design-system';
+import { ThemeService, UmsToastContainerComponent, type ThemeMode } from '@ums/design-system';
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
+import { ChartsCatalogComponent } from './pages/charts-catalog/charts-catalog.component';
+import { CommandPaletteCatalogComponent } from './pages/command-palette-catalog/command-palette-catalog.component';
+import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
+import { DataTableCatalogComponent } from './pages/data-table-catalog/data-table-catalog.component';
+import { DateTimeCatalogComponent } from './pages/date-time-catalog/date-time-catalog.component';
+import { FormCatalogComponent } from './pages/form-catalog/form-catalog.component';
 import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.component';
+import { NavigationCatalogComponent } from './pages/navigation-catalog/navigation-catalog.component';
+import { OverlayCatalogComponent } from './pages/overlay-catalog/overlay-catalog.component';
+import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/state-surface-catalog.component';
 
 /**
  * DSYS-18 "Storybook-equivalent catalog" (requirement-spec.md §9): a single-page browsable
@@ -16,7 +25,21 @@ import { IconCatalogComponent } from './pages/icon-catalog/icon-catalog.componen
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ButtonCatalogComponent, IconCatalogComponent, AssetCatalogComponent],
+  imports: [
+    ButtonCatalogComponent,
+    FormCatalogComponent,
+    DataDisplayCatalogComponent,
+    DataTableCatalogComponent,
+    DateTimeCatalogComponent,
+    StateSurfaceCatalogComponent,
+    NavigationCatalogComponent,
+    OverlayCatalogComponent,
+    CommandPaletteCatalogComponent,
+    ChartsCatalogComponent,
+    IconCatalogComponent,
+    AssetCatalogComponent,
+    UmsToastContainerComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

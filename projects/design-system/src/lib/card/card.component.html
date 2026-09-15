@@ -1,0 +1,39 @@
+@switch (variant()) {
+  @case ('stat') {
+    <p class="ums-card__stat-label">{{ statLabel() }}</p>
+    <p class="ums-card__stat-value">{{ statValue() }}</p>
+    @if (statDelta()) {
+      <p class="ums-card__stat-delta" [attr.data-trend]="statTrend() ?? null">
+        @if (statTrend()) {
+          <ums-icon [name]="trendIcon[statTrend()!]" [size]="14" decorative />
+        }
+        {{ statDelta() }}
+      </p>
+    }
+  }
+  @case ('profile') {
+    <ums-avatar
+      class="ums-card__profile-avatar"
+      size="lg"
+      [name]="profileName()"
+      [imageUrl]="profileImageUrl()"
+    />
+    <p class="ums-card__profile-name">{{ profileName() }}</p>
+    @if (profileRole()) {
+      <p class="ums-card__profile-role">{{ profileRole() }}</p>
+    }
+  }
+  @default {
+    @if (title()) {
+      <header class="ums-card__header">
+        <h3 class="ums-card__title">{{ title() }}</h3>
+        @if (subtitle()) {
+          <p class="ums-card__subtitle">{{ subtitle() }}</p>
+        }
+      </header>
+    }
+    <div class="ums-card__body">
+      <ng-content />
+    </div>
+  }
+}

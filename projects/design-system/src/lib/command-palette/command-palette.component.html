@@ -1,0 +1,74 @@
+@if (open()) {
+  <div class="ums-command-palette__backdrop" aria-hidden="true" (click)="onBackdropClick()"></div>
+  <div
+    #panel
+    class="ums-command-palette__panel"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="label()"
+    tabindex="-1"
+    (keydown)="onPanelKeydown($event)"
+  >
+    <div class="ums-command-palette__search">
+      <ums-icon name="magnifying-glass" decorative />
+      <input
+        #searchInput
+        type="text"
+        class="ums-command-palette__input"
+        role="combobox"
+        aria-expanded="true"
+        aria-autocomplete="list"
+        [attr.aria-controls]="listboxId"
+        [attr.aria-activedescendant]="activeItemId() ?? null"
+        [placeholder]="placeholder()"
+        [value]="query()"
+        (input)="onQueryInput($event)"
+        (keydown)="onSearchKeydown($event)"
+      />
+    </div>
+
+    <p class="ums-visually-hidden" aria-live="polite">
+      {{ filteredItems().length }} {{ filteredItems().length === 1 ? 'result' : 'results' }}
+    </p>
+
+    @if (filteredItems().length === 0) {
+      <p class="ums-command-palette__empty">{{ noResultsText() }}</p>
+    } @else {
+      <div
+        class="ums-command-palette__list"
+        role="listbox"
+        [id]="listboxId"
+        [attr.aria-label]="label()"
+      >
+        @for (group of groupedItems(); track group.group ?? '_ungrouped_' + $index) {
+          @if (group.group) {
+            <div class="ums-command-palette__group-label" role="presentation">
+              {{ group.group }}
+            </div>
+          }
+          @for (item of group.items; track item.id) {
+            <div
+              [id]="optionId(item.id)"
+              class="ums-command-palette__option"
+              role="option"
+              tabindex="-1"
+              [attr.aria-selected]="isActive(item)"
+              [class.ums-command-palette__option--active]="isActive(item)"
+              (mousedown)="$event.preventDefault()"
+              (click)="selectItem(item)"
+              (keydown.enter)="selectItem(item)"
+            >
+              @if (item.icon) {
+                <ums-icon [name]="item.icon" decorative />
+              }
+              <span class="ums-command-palette__option-label">{{ item.label }}</span>
+              @if (item.shortcutHint) {
+                <span class="ums-command-palette__option-shortcut">{{ item.shortcutHint }}</span>
+              }
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+}

@@ -1,0 +1,17 @@
+<input
+  type="time"
+  class="ums-time-picker__native"
+  [id]="id()"
+  [name]="name()"
+  [value]="value()"
+  [disabled]="disabled()"
+  [required]="required()"
+  [attr.min]="min() ?? null"
+  [attr.max]="max() ?? null"
+  [attr.step]="step() ?? null"
+  [attr.aria-invalid]="invalid() ? 'true' : null"
+  [attr.aria-describedby]="ariaDescribedBy() ?? null"
+  [attr.aria-label]="label() ?? null"
+  (input)="onInput($event)"
+  (blur)="onBlur()"
+/>

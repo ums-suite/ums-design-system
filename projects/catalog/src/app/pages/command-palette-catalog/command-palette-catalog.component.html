@@ -1,0 +1,26 @@
+<section
+  class="catalog-section"
+  data-testid="command-palette-catalog"
+  aria-labelledby="command-palette-catalog-heading"
+>
+  <h2 id="command-palette-catalog-heading">Command Palette</h2>
+
+  <p>Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>K</kbd> anywhere on this page to open it, or:</p>
+
+  <div class="catalog-row">
+    <button type="button" data-testid="command-palette-trigger" (click)="openPalette()">
+      Open command palette
+    </button>
+  </div>
+
+  <p data-testid="command-palette-last-selected">Last selected: {{ lastSelected() ?? 'none' }}</p>
+
+  <ums-command-palette
+    data-testid="command-palette"
+    [open]="open()"
+    [items]="items"
+    (openRequested)="openPalette()"
+    (closed)="closePalette()"
+    (commandSelected)="onCommandSelected($event)"
+  />
+</section>

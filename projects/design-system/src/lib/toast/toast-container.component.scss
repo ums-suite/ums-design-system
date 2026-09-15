@@ -1,0 +1,98 @@
+:host {
+  position: fixed;
+  inset-block-end: var(--space-5);
+  inset-inline-end: var(--space-5);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-inline-size: min(90vw, 360px);
+}
+
+.ums-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-3);
+  border-inline-start: 4px solid var(--color-info);
+  animation: ums-toast-enter var(--motion-base) var(--ease-standard);
+
+  &[data-variant='success'] {
+    border-inline-start-color: var(--color-success);
+  }
+
+  &[data-variant='warning'] {
+    border-inline-start-color: var(--color-warning);
+  }
+
+  &[data-variant='danger'] {
+    border-inline-start-color: var(--color-danger);
+  }
+
+  &[data-variant='info'] {
+    border-inline-start-color: var(--color-info);
+  }
+
+  &[data-variant='neutral'] {
+    border-inline-start-color: var(--color-border);
+  }
+}
+
+@keyframes ums-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ums-toast__message {
+  flex: 1;
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm-font-size);
+}
+
+.ums-toast__action {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--type-body-sm-font-size);
+  cursor: pointer;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-xs);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.ums-toast__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-xs);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}

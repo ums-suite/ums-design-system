@@ -1,0 +1,117 @@
+<section
+  class="catalog-section"
+  data-testid="overlay-catalog"
+  aria-labelledby="overlay-catalog-heading"
+>
+  <h2 id="overlay-catalog-heading">Feedback & overlays</h2>
+
+  <h3>Modal</h3>
+  <div class="catalog-row" data-testid="modal-row">
+    <ums-button data-testid="modal-trigger" (click)="openModal()">Open modal</ums-button>
+    <ums-modal
+      data-testid="modal"
+      title="Review application"
+      [open]="modalOpen()"
+      (closed)="closeModal()"
+    >
+      <p>Confirm the applicant's details before moving this to the next admissions stage.</p>
+      <div umsModalFooter>
+        <ums-button variant="ghost" data-testid="modal-cancel" (click)="closeModal()"
+          >Cancel</ums-button
+        >
+        <ums-button data-testid="modal-confirm" (click)="closeModal()">Approve</ums-button>
+      </div>
+    </ums-modal>
+  </div>
+
+  <h3>Drawer</h3>
+  <div class="catalog-row" data-testid="drawer-row">
+    <ums-button data-testid="drawer-trigger" (click)="openDrawer()">Open drawer</ums-button>
+    <ums-drawer
+      data-testid="drawer"
+      title="Applicant filters"
+      position="end"
+      [open]="drawerOpen()"
+      (closed)="closeDrawer()"
+    >
+      <p>Narrow the applicant list by admission cycle, programme, and status.</p>
+      <div umsDrawerFooter>
+        <ums-button variant="ghost" data-testid="drawer-close" (click)="closeDrawer()"
+          >Close</ums-button
+        >
+      </div>
+    </ums-drawer>
+  </div>
+
+  <h3>Confirmation dialog</h3>
+  <div class="catalog-row" data-testid="confirmation-dialog-row">
+    <ums-button
+      variant="danger"
+      data-testid="confirmation-dialog-trigger"
+      (click)="openConfirmation()"
+      >Deactivate account</ums-button
+    >
+    <ums-confirmation-dialog
+      data-testid="confirmation-dialog"
+      title="Deactivate student account"
+      description="This will immediately revoke portal access."
+      [open]="confirmationOpen()"
+      (confirmed)="onConfirmed($event)"
+      (cancelled)="onCancelled()"
+    />
+    @if (lastConfirmedReason()) {
+      <p data-testid="confirmation-dialog-result">Confirmed reason: {{ lastConfirmedReason() }}</p>
+    }
+  </div>
+
+  <h3>Toast</h3>
+  <div class="catalog-row" data-testid="toast-row">
+    <ums-button data-testid="toast-trigger" (click)="showToast()">Save draft</ums-button>
+    <ums-button variant="secondary" data-testid="toast-action-trigger" (click)="showActionToast()"
+      >Submit application</ums-button
+    >
+  </div>
+
+  <h3>Tooltip</h3>
+  <div class="catalog-row" data-testid="tooltip-row">
+    <button
+      type="button"
+      umsTooltip="Only visible to admissions staff"
+      data-testid="tooltip-trigger"
+    >
+      Staff-only field
+    </button>
+  </div>
+
+  <h3>Popover</h3>
+  <div class="catalog-row" data-testid="popover-row">
+    <ums-popover data-testid="popover" label="Applicant quick actions">
+      <span umsPopoverTrigger data-testid="popover-trigger">Quick actions</span>
+      <div umsPopoverContent data-testid="popover-content">
+        <p>Send a reminder or flag this application for review.</p>
+      </div>
+    </ums-popover>
+  </div>
+
+  <h3>Locale layout check (English vs. Bengali)</h3>
+  <p>
+    A long-form Bengali title renders meaningfully longer than the English original --
+    design-decisions.md "Locale-Safe Component Sizing Verification".
+  </p>
+  <div class="catalog-row" data-testid="overlay-locale-row">
+    <ums-button data-testid="modal-bn-trigger" (click)="openBengaliModal()">খোলা মোডাল</ums-button>
+    <ums-modal
+      data-testid="modal-bn"
+      [title]="bengaliModalTitle"
+      [open]="bengaliModalOpen()"
+      (closed)="closeBengaliModal()"
+    >
+      <p>দীর্ঘ বাংলা শিরোনাম মোডালের হেডার লেআউট পরীক্ষা করার জন্য ব্যবহৃত হয়।</p>
+      <div umsModalFooter>
+        <ums-button data-testid="modal-bn-close" (click)="closeBengaliModal()"
+          >বন্ধ করুন</ums-button
+        >
+      </div>
+    </ums-modal>
+  </div>
+</section>

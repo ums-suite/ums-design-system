@@ -1,0 +1,18 @@
+<ol class="ums-timeline__list">
+  @for (entry of entries(); track entry.timestamp + entry.title) {
+    <li class="ums-timeline__item">
+      <span
+        class="ums-timeline__dot"
+        [attr.data-status]="entry.status ?? 'neutral'"
+        aria-hidden="true"
+      ></span>
+      <div class="ums-timeline__content">
+        <p class="ums-timeline__title">{{ entry.title }}</p>
+        <time class="ums-timeline__timestamp">{{ entry.timestamp }}</time>
+        @if (entry.description) {
+          <p class="ums-timeline__description">{{ entry.description }}</p>
+        }
+      </div>
+    </li>
+  }
+</ol>

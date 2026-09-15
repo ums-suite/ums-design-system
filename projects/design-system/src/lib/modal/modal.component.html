@@ -1,0 +1,34 @@
+@if (open()) {
+  <!-- Decorative, non-interactive backdrop: a click-to-dismiss convenience for pointer users,
+       never the only way to close (Escape and the header close button both work identically for
+       a keyboard user), so it deliberately isn't a focusable/keyboard-operable control itself. -->
+  <div class="ums-modal__backdrop" aria-hidden="true" (click)="onBackdropClick()"></div>
+  <div
+    #panel
+    class="ums-modal__panel"
+    [attr.data-size]="size()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-labelledby]="titleId"
+    tabindex="-1"
+    (keydown)="onPanelKeydown($event)"
+  >
+    <header class="ums-modal__header">
+      <h2 [id]="titleId" class="ums-modal__title">{{ title() }}</h2>
+      <button
+        type="button"
+        class="ums-modal__close"
+        (click)="onCloseButtonClick()"
+        aria-label="Close dialog"
+      >
+        <ums-icon name="x" decorative />
+      </button>
+    </header>
+    <div class="ums-modal__body">
+      <ng-content />
+    </div>
+    <footer class="ums-modal__footer">
+      <ng-content select="[umsModalFooter]" />
+    </footer>
+  </div>
+}

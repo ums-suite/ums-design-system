@@ -1,0 +1,11 @@
+// Page-layout only -- no design-token references here (see button-catalog.component.scss's
+// header comment: the catalog app stands in for a real ums-*-web consuming app and is
+// lint-enforced against raw var(--token) usage the same way).
+
+.catalog-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}

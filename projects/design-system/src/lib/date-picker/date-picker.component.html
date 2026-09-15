@@ -1,0 +1,87 @@
+<div class="ums-date-picker__control">
+  <input
+    type="text"
+    class="ums-date-picker__input"
+    role="combobox"
+    aria-haspopup="dialog"
+    readonly
+    [id]="id()"
+    [disabled]="disabled()"
+    [placeholder]="placeholder()"
+    [value]="displayValue()"
+    [attr.aria-invalid]="invalid() ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy() ?? null"
+    [attr.aria-expanded]="open()"
+    [attr.aria-controls]="gridId"
+    (click)="toggleOpen()"
+  />
+  <button
+    type="button"
+    class="ums-date-picker__toggle"
+    [disabled]="disabled()"
+    [attr.aria-label]="label()"
+    [attr.aria-expanded]="open()"
+    (click)="toggleOpen()"
+  >
+    <ums-icon name="calendar" decorative />
+  </button>
+</div>
+
+@if (open()) {
+  <div class="ums-date-picker__panel" role="dialog" [attr.aria-label]="label()">
+    <div class="ums-date-picker__header">
+      <button
+        type="button"
+        class="ums-date-picker__nav"
+        aria-label="Previous month"
+        (click)="goToPreviousMonth()"
+      >
+        <ums-icon name="caret-left" decorative />
+      </button>
+      <span class="ums-date-picker__month-label">{{ monthLabel() }}</span>
+      <button
+        type="button"
+        class="ums-date-picker__nav"
+        aria-label="Next month"
+        (click)="goToNextMonth()"
+      >
+        <ums-icon name="caret-right" decorative />
+      </button>
+    </div>
+
+    <div
+      class="ums-date-picker__grid"
+      role="grid"
+      tabindex="-1"
+      [id]="gridId"
+      (keydown)="onGridKeydown($event)"
+    >
+      <div class="ums-date-picker__row" role="row">
+        @for (label of weekdayLabels; track label) {
+          <span class="ums-date-picker__weekday" role="columnheader">{{ label }}</span>
+        }
+      </div>
+      @for (week of weeks(); track $index) {
+        <div class="ums-date-picker__row" role="row">
+          @for (day of week; track day.iso) {
+            <div role="gridcell">
+              <button
+                type="button"
+                class="ums-date-picker__day"
+                [attr.data-iso]="day.iso"
+                [class.ums-date-picker__day--outside]="!day.inCurrentMonth"
+                [class.ums-date-picker__day--selected]="isSelected(day)"
+                [disabled]="isDisabledDay(day)"
+                [tabindex]="isFocused(day) ? 0 : -1"
+                [attr.aria-selected]="isSelected(day)"
+                (click)="selectDay(day)"
+              >
+                {{ day.dayOfMonth }}
+              </button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

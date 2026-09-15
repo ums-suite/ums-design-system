@@ -1,0 +1,97 @@
+<header class="ums-app-shell__topbar">
+  <div class="ums-app-shell__brand">
+    <ng-content select="[umsAppShellBrand]" />
+  </div>
+
+  @if (mode() === 'operational') {
+    <button
+      type="button"
+      class="ums-app-shell__collapse-toggle"
+      (click)="toggleCollapsed()"
+      [attr.aria-expanded]="!collapsedState()"
+      aria-controls="ums-app-shell-side-nav"
+    >
+      <ums-icon name="list" decorative />
+      <span class="ums-app-shell__sr-only">Toggle navigation</span>
+    </button>
+  } @else {
+    <nav class="ums-app-shell__mega-nav" aria-label="Primary">
+      <ul class="ums-app-shell__mega-list">
+        @for (item of navItems(); track item.label) {
+          <li class="ums-app-shell__mega-item">
+            @if (item.children?.length) {
+              <button
+                type="button"
+                class="ums-app-shell__mega-trigger"
+                [attr.aria-expanded]="openMegaMenu() === item.label"
+                (click)="toggleMegaMenu(item.label)"
+              >
+                {{ item.label }}
+                <ums-icon name="caret-down" [size]="14" decorative />
+              </button>
+              @if (openMegaMenu() === item.label) {
+                <div class="ums-app-shell__mega-panel" role="menu" [attr.aria-label]="item.label">
+                  @for (child of item.children; track child.label) {
+                    <a
+                      role="menuitem"
+                      [href]="child.href ?? '#'"
+                      (click)="onNavItemClick($event, child)"
+                    >
+                      {{ child.label }}
+                    </a>
+                  }
+                </div>
+              }
+            } @else {
+              <a
+                class="ums-app-shell__mega-trigger"
+                [href]="item.href ?? '#'"
+                [attr.aria-current]="item.active ? 'page' : null"
+                (click)="onNavItemClick($event, item)"
+              >
+                {{ item.label }}
+              </a>
+            }
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+
+  <div class="ums-app-shell__actions">
+    <ng-content select="[umsAppShellActions]" />
+  </div>
+</header>
+
+<div class="ums-app-shell__body">
+  @if (mode() === 'operational') {
+    <nav
+      id="ums-app-shell-side-nav"
+      class="ums-app-shell__side-nav"
+      [class.ums-app-shell__side-nav--collapsed]="collapsedState()"
+      aria-label="Primary"
+    >
+      <ul>
+        @for (item of navItems(); track item.label) {
+          <li>
+            <a
+              class="ums-app-shell__side-nav-link"
+              [class.ums-app-shell__side-nav-link--active]="item.active"
+              [href]="item.href ?? '#'"
+              [attr.aria-current]="item.active ? 'page' : null"
+              (click)="onNavItemClick($event, item)"
+            >
+              @if (item.icon) {
+                <ums-icon [name]="item.icon" decorative />
+              }
+              <span class="ums-app-shell__side-nav-label">{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+  <main class="ums-app-shell__content">
+    <ng-content />
+  </main>
+</div>

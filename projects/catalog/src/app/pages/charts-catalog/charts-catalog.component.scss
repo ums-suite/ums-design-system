@@ -1,0 +1,22 @@
+// Page-layout only -- no design-token references here; see
+// pages/button-catalog/button-catalog.component.scss's header comment for the reasoning (this
+// app stands in for a real ums-*-web consuming app, so it is lint-enforced the same way).
+
+.chart-row {
+  inline-size: 100%;
+  max-inline-size: 40rem;
+}
+
+.sparkline-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  inline-size: 12rem;
+}
+
+.progress-bar-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  inline-size: 16rem;
+}
