@@ -1,0 +1,114 @@
+<section
+  class="catalog-section"
+  data-testid="charts-catalog"
+  aria-labelledby="charts-catalog-heading"
+>
+  <h2 id="charts-catalog-heading">Data Visualization</h2>
+
+  <h3>Line chart</h3>
+  <div class="catalog-row chart-row" data-testid="line-chart-row">
+    <ums-line-chart
+      data-testid="line-chart"
+      [categories]="enrollmentCategories"
+      [series]="enrollmentSeries"
+      height="280px"
+    />
+  </div>
+
+  <h3>Bar chart</h3>
+  <div class="catalog-row chart-row" data-testid="bar-chart-row">
+    <ums-bar-chart
+      data-testid="bar-chart"
+      [categories]="enrollmentCategories"
+      [series]="collectionRateSeries"
+      height="280px"
+    />
+  </div>
+
+  <h3>Area chart</h3>
+  <div class="catalog-row chart-row" data-testid="area-chart-row">
+    <ums-area-chart
+      data-testid="area-chart"
+      [categories]="enrollmentCategories"
+      [series]="collectionRateSeries"
+      height="280px"
+    />
+  </div>
+
+  <h3>Donut chart</h3>
+  <div class="catalog-row chart-row" data-testid="donut-chart-row">
+    <ums-donut-chart data-testid="donut-chart" [data]="enrollmentFunnelSlices" height="280px" />
+  </div>
+
+  <h3>Sparkline</h3>
+  <div class="catalog-row" data-testid="sparkline-row">
+    <div class="sparkline-cell">
+      <span>This month's donations</span>
+      <ums-sparkline data-testid="sparkline" [data]="donationSparkline" tone="success" />
+    </div>
+  </div>
+
+  <h3>Progress ring / bar</h3>
+  <div class="catalog-row" data-testid="progress-row">
+    <ums-progress-ring data-testid="progress-ring" [value]="68" tone="secondary" />
+    <div class="progress-bar-cell">
+      <ums-progress-bar
+        data-testid="progress-bar"
+        [value]="42"
+        tone="info"
+        label="42 / 100 seats filled"
+      />
+    </div>
+  </div>
+
+  <h3>Heatmap calendar</h3>
+  <div class="catalog-row chart-row" data-testid="heatmap-calendar-row">
+    <ums-heatmap-calendar
+      data-testid="heatmap-calendar"
+      [entries]="heatmapEntries"
+      range="2026"
+      height="200px"
+    />
+  </div>
+
+  <h3>Live update (mid-animation interrupt-and-retarget)</h3>
+  <div class="catalog-row chart-row" data-testid="live-update-row">
+    <ums-bar-chart
+      data-testid="live-update-chart"
+      [categories]="['Block A', 'Block B', 'Block C']"
+      [series]="occupancySeries()"
+      height="240px"
+    />
+  </div>
+  <div class="catalog-row">
+    <ums-button data-testid="live-update-once" (click)="updateOnce()">Update once</ums-button>
+    <ums-button data-testid="live-update-rapidly" (click)="updateRapidly()"
+      >Update rapidly (retarget mid-animation)</ums-button
+    >
+  </div>
+
+  <h3>Chart inside a Modal (live theme toggle while open)</h3>
+  <div class="catalog-row" data-testid="chart-modal-row">
+    <ums-button data-testid="chart-modal-trigger" (click)="openModal()"
+      >Open chart in modal</ums-button
+    >
+    <ums-modal
+      data-testid="chart-modal"
+      title="Enrollment trend"
+      [open]="modalOpen()"
+      (closed)="closeModal()"
+    >
+      <div class="chart-row">
+        <ums-line-chart
+          data-testid="chart-modal-line-chart"
+          [categories]="enrollmentCategories"
+          [series]="enrollmentSeries"
+          height="220px"
+        />
+      </div>
+      <div umsModalFooter>
+        <ums-button data-testid="chart-modal-close" (click)="closeModal()">Close</ums-button>
+      </div>
+    </ums-modal>
+  </div>
+</section>

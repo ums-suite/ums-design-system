@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ThemeService, UmsToastContainerComponent, type ThemeMode } from '@ums/design-system';
 import { AssetCatalogComponent } from './pages/asset-catalog/asset-catalog.component';
 import { ButtonCatalogComponent } from './pages/button-catalog/button-catalog.component';
+import { ChartsCatalogComponent } from './pages/charts-catalog/charts-catalog.component';
 import { CommandPaletteCatalogComponent } from './pages/command-palette-catalog/command-palette-catalog.component';
 import { DataDisplayCatalogComponent } from './pages/data-display-catalog/data-display-catalog.component';
 import { DataTableCatalogComponent } from './pages/data-table-catalog/data-table-catalog.component';
@@ -34,6 +35,7 @@ import { StateSurfaceCatalogComponent } from './pages/state-surface-catalog/stat
     NavigationCatalogComponent,
     OverlayCatalogComponent,
     CommandPaletteCatalogComponent,
+    ChartsCatalogComponent,
     IconCatalogComponent,
     AssetCatalogComponent,
     UmsToastContainerComponent,
