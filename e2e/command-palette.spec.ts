@@ -52,6 +52,12 @@ test.describe('Command Palette catalog page', () => {
 
   test('ArrowDown/ArrowUp move the active option and Enter activates it', async ({ page }) => {
     await page.keyboard.press('Control+k');
+    // Wait for the palette to actually attach (and its own document:keydown listener with it)
+    // before sending arrow keys -- without this, a keystroke sent immediately after the Ctrl+K
+    // that opened the palette can race Angular's render of the newly-created component and be
+    // dropped, intermittently landing one ArrowDown short (a real, pre-existing flake caught
+    // while re-verifying the whole branch's e2e suite for DSYS-16's flow closeout).
+    await expect(page.locator('.ums-command-palette__input')).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     const activeOption = page.locator('[role="dialog"] [role="option"][aria-selected="true"]');

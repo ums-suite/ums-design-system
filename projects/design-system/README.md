@@ -97,23 +97,31 @@ npm run changeset         # record a semver-intent changeset for the next releas
 
 ## What this package currently implements
 
-| Ticket  | Area                                                                                | Status                                                           |
-| ------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| DSYS-1  | Token pipeline (Style Dictionary build, `tools/tokens/`)                            | Done                                                             |
-| DSYS-2  | Color tokens (light/dark, semantic)                                                 | Done                                                             |
-| DSYS-3  | Typography tokens (Fraunces/Inter, Noto Sans/Serif Bengali, two-intensity register) | Done                                                             |
-| DSYS-4  | Spacing / radius / elevation / motion / breakpoint tokens                           | Done                                                             |
-| DSYS-5  | Theming engine (`ThemeService`, `MotionService`, reduced-motion handling)           | Done                                                             |
-| DSYS-6  | Icon registry (Phosphor subset, `IconName` union) + brand asset registry            | Done                                                             |
-| DSYS-7  | Button family (Button, Icon Button, FAB, Split Button)                              | Done                                                             |
-| DSYS-18 | Visual regression + a11y suite (Playwright, axe-core, Bengali-length variant)       | Done for the Button family; extend per-component as DSYS-8+ ship |
-| DSYS-19 | Consumption-contract lint rules (no raw token CSS vars)                             | Done                                                             |
+| Ticket  | Area                                                                                                      | Status                                       |
+| ------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| DSYS-1  | Token pipeline (Style Dictionary build, `tools/tokens/`)                                                  | Done                                         |
+| DSYS-2  | Color tokens (light/dark, semantic)                                                                       | Done                                         |
+| DSYS-3  | Typography tokens (Fraunces/Inter, Noto Sans/Serif Bengali, two-intensity register)                       | Done                                         |
+| DSYS-4  | Spacing / radius / elevation / motion / breakpoint tokens                                                 | Done                                         |
+| DSYS-5  | Theming engine (`ThemeService`, `MotionService`, reduced-motion handling)                                 | Done                                         |
+| DSYS-6  | Icon registry (Phosphor subset, `IconName` union) + brand asset registry                                  | Done                                         |
+| DSYS-7  | Button family (Button, Icon Button, FAB, Split Button)                                                    | Done                                         |
+| DSYS-8  | Form input primitives (text/number/textarea input, Select, Combobox, form field wrapper)                  | Done                                         |
+| DSYS-9  | Date/Time/Date-range picker, OTP input, File upload (drag-drop, progress)                                 | Done                                         |
+| DSYS-10 | Rich text editor (Notice/Content authoring)                                                               | **Not started** — see note below             |
+| DSYS-11 | Data display (Card, Badge/Status Chip, Avatar + group, Breadcrumbs, Timeline)                             | Done                                         |
+| DSYS-12 | Data Table (sort/filter/resize/pin, sticky header, selection, CDK virtual scroll)                         | Done                                         |
+| DSYS-13 | Navigation shell (App shell, Tab bar, Stepper)                                                            | Done                                         |
+| DSYS-14 | Command Palette (⌘K/Ctrl+K)                                                                               | Done                                         |
+| DSYS-15 | Feedback & Overlays (Modal, Drawer, Toast, Tooltip, Popover, Confirmation dialog)                         | Done                                         |
+| DSYS-16 | Data Visualization (ECharts wrapper: Line/Bar/Donut/Area, Sparkline, Progress ring/bar, Heatmap calendar) | Done                                         |
+| DSYS-17 | State surfaces (Skeleton, Empty state, Error state, Offline banner)                                       | Done                                         |
+| DSYS-18 | Visual regression + a11y suite (Playwright, axe-core, Bengali-length variant)                             | Done, extended per-component through DSYS-16 |
+| DSYS-19 | Consumption-contract lint rules (no raw token CSS vars)                                                   | Done                                         |
 
-**Queued, explicitly out of scope for this pass** (DSYS-8 through DSYS-17): form primitives
-beyond Button (text/number/textarea input, Select, Combobox, date/time pickers, file upload, OTP
-input, rich text editor), Data Table, navigation shell (app shell, Tab bar, Stepper, Command
-Palette), Feedback & Overlays (Modal, Drawer, Toast, Tooltip, Popover) — including Modal/Drawer's
-own visual-regression case for "open overlay + live theme toggle"
-(`design-decisions.md` "Theme-Switch Transition Mechanism"), which cannot be authored until a
-Modal/Drawer exists — Data Visualization (ECharts wrapper), and State Surfaces (skeletons, empty
-/error states). See `ums-platform`'s ticket tracker for the full DSYS breakdown.
+**Known gap: DSYS-10 (Rich text editor) was never built.** It was discovered missing while
+closing out this flow (verifying DSYS-8 through DSYS-17 together) — no `rich-text-editor`
+component, catalog page, or e2e coverage exists anywhere in this package, despite
+`requirement-spec.md` §6 naming it under Forms & Inputs and depending only on DSYS-8 (already
+done). It is **not** part of this change and needs its own follow-up ticket/PR before Flow #3
+(DSYS-1 through DSYS-19) can be considered fully closed.

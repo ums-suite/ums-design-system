@@ -7,4 +7,4 @@ The shared Angular 22 UI kit and design-token package consumed by all six UMS fr
 
 ## Status
 
-Token pipeline, theming engine, icon/asset registries, and the Button component family are implemented (DSYS-1 through DSYS-7, DSYS-18, DSYS-19) — see [`projects/design-system/README.md`](projects/design-system/README.md) for what's shipped vs. queued. Remaining component families (DSYS-8 through DSYS-17: forms, data table, navigation shell, overlays, data viz, state surfaces) are tracked in [`ums-platform/PLATFORM_BLUEPRINT.md`](https://github.com/ums-suite/ums-platform/blob/main/PLATFORM_BLUEPRINT.md).
+All of DSYS-1 through DSYS-9, DSYS-11 through DSYS-19 are implemented — tokens, theming, icon/asset registries, the full component inventory (forms, data table, navigation shell, overlays, data visualization, state surfaces), the visual-regression/a11y suite, and the consumption-contract lint rules. See [`projects/design-system/README.md`](projects/design-system/README.md) for the per-ticket breakdown. **DSYS-10 (Rich text editor) is the one remaining gap** — not yet built; see that README's note for details.
